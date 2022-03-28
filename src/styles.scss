@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+html,body{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    text-align: center;
+}
+
+// *{
+//     font-family: 'biko',sans-serif!important;
+// }
+
+@font-face {
+    font-family: 'biko-regular';
+    src: url('assets/fonts/biko/Biko_Regular.otf');
+}
+
+@font-face {
+    font-family: 'proxima-nova-soft';
+    src: url('assets/fonts/Proxima-Nova-Font/proxima_ssv/Proxima\ Nova\ Alt\ Light.otf');
+}

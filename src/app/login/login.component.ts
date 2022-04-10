@@ -3,7 +3,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { AbstractControl, FormBuilder, } from '@angular/forms'
 import ConfirmedValidator from './confirmedValidator';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CommonService } from '../services/common.service';
+import { Router } from '@angular/router';
 // import Validation from './utils/validation';
+
 
 
 @Component({
@@ -12,8 +15,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  // @ViewChild("error") myNameElem: ElementRef;
-  // @ViewChild("errorMessage") errorMessage: ElementRef;
+  @ViewChild("error")
+  myNameElem!: ElementRef;
+  @ViewChild("errorMessage") errorMessage!: ElementRef;
 
   logOrReg: any = 'welcome';
   registerContinue: any = 'register';
@@ -35,40 +39,79 @@ export class LoginComponent implements OnInit {
   otpDigit4: any;
   otp: any;
   verified: boolean = true;
-  phnNumberToChangePwd:any;
-  isVerified:any;
+  phnNumberToChangePwd: any;
+  isVerified: any;
+  gotoLogin: boolean = true;
+  phnNum: any;
+  re = /(?=[A-Za-z0-9]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{5,12}).*$/
+  loginUserNameValidation:any;
+  loginUserPasswordValidation: any;
+ errorMessageFromServer:any
+  
+  changepsswordToken: any;
+  errorMessageHandler:any='fullname'
 
-  public myForm: FormGroup;
+  registerPageError: any;
+  passwordChangedTemplate:boolean=false
+
+  public myForm: FormGroup=new FormGroup({
+    mob:new FormControl('')
+  })
   public loginForm: FormGroup;
+  public changepasswordForm!: FormGroup;
   contactForm: FormGroup = new FormGroup({
-    mobileNumber: new FormControl(''),
+    
     fullname: new FormControl(''),
     username: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
     confirmPassword: new FormControl('')
 
+
   });
-  constructor(public formBuilder: FormBuilder, private http: HttpClient) {
-    this.myForm = formBuilder.group({
-      mob: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
-    })
+  
+
+ 
+  constructor(public formBuilder: FormBuilder, private http: HttpClient, private service: CommonService,private router:Router) {
+    // this.myForm = formBuilder.group({
+    //   mob: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
+    // })
+    this.changepasswordForm = formBuilder.group({
+      password: ['', [Validators.required, Validators.pattern(/^(?=\D*\d)(?=[^a-z][a-z])(?=[^A-Z][A-Z]).{6,}$/)], Validators.minLength(10)],
+      confirmPassword: ['', Validators.required]
+    }
+      ,
+      {
+        validators: [ConfirmedValidator.match('password', 'confirmPassword')]
+      })
+
     this.loginForm = formBuilder.group({
-      loginusername: ['', [Validators.required]],
-      loginpassword: ['', [Validators.required]],
+      loginusername: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(10)]],
+      loginpassword: ['', [Validators.required, Validators.pattern(/^(?=\D*\d)(?=[^a-z][a-z])(?=[^A-Z][A-Z]).{6,}$/)], Validators.minLength(10)]
     })
   }
 
   ngOnInit(): void {
+    
+  
+    this.myForm = this.formBuilder.group({
+      // mob: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
+      mob: ['+91 ', [Validators.required, Validators.pattern("^[+][9][1][ ][6-9]{1}[0-9]{9}$")]]
+    })
+    
+    this.service.jwtToken.subscribe((value) => {
+      this.changepsswordToken = value;
+      console.log(this.changepsswordToken)
+    })
     this.contactForm = this.formBuilder.group({
-      mobileNumber: [''],
-      fullname: ['', [Validators.required, Validators.minLength(10)]],
-      username: ['', [Validators.required, Validators.maxLength(15), Validators.pattern("^[a-zA-Z]+$")]],
+     
+      fullname: ['', [Validators.required, Validators.minLength(5)]],
+      username: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern(/^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{6,}$/)]],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{4,16}$/)]],
       confirmPassword: ['', Validators.required]
-    }
-      ,
+    },
+      // ,/^(?=\D*\d)(?=[^a-z][a-z])(?=[^A-Z][A-Z]).{6,}$/
       {
         validators: [ConfirmedValidator.match('password', 'confirmPassword')]
       }
@@ -77,22 +120,70 @@ export class LoginComponent implements OnInit {
   }
 
 
+  LoginOrReg(text: any) {
+    console.log("verification code")
+    this.logOrReg = text;
+
+  }
+  onFocus1(e:any){
+    console.log(e)
+    e.preventDefault()
+    console.log("focused")
+    // this.registerPageError=!this.registerPageError
+    this.phnNumberSubmit=false;
+  }
+  onFocus(e:any,d:any){
+    console.log(e)
+    console.log(d)
+   
+    this.errorMessageHandler=e
+  }
+
+  //   button onclick function for registration page
+  RegContinue(text: any): any {
+    // this.phnNumberSubmit = true;
+    //     this.registerContinue = text;
+    //     this.swapVariableData = text;
+    this.phnNumberSubmit = true;
+    let url = "https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/register/sendOtp"
+    this.http.post<any>(url, { phoneNumber:this.myForm.value.mob.slice(4)}, { observe: 'response' }).subscribe({
+      next: (res) => {
+        console.log(res.body.meta.token)
+        this.token = res.body.meta.token
+        console.log("jwt " + this.token)
+        this.jwtToken = "jwt " + this.token
+        this.service.getToken(this.jwtToken)
+        this.service.getUrl("https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/register/verfiyOtp")
+        this.registerContinue = text;
+        this.swapVariableData = text;
+
+      }, error: (error) => {
+
+        
+          console.log(error)
+          
+
+      }
+    })
+
+  }
   get f(): { [key: string]: AbstractControl } {
 
     return this.contactForm.controls;
   }
   get m() {
+
+    console.log(this.myForm.controls)
     return this.myForm.controls;
+
   }
-  LoginOrReg(text: any) {
-    console.log("verification code")
-    this.logOrReg = text;
-    
-  }
+
   login1() {
     console.log(this.loginForm.value)
     let urll = "https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/login/user"
-
+console.log(this.re.test(this.loginForm.get('loginusername')!.value))
+this.loginUserNameValidation=this.re.test(this.loginForm.get('loginusername')!.value)
+this.loginUserPasswordValidation=this.re.test(this.loginForm.get('loginpassword')!.value)
     let headers = new HttpHeaders({ 'Authorization': 'jwt' })
     this.http.post(urll, {
       "userName": this.loginForm.get('loginusername')!.value,
@@ -100,8 +191,11 @@ export class LoginComponent implements OnInit {
     }, { headers: headers }).subscribe({
       next: (res) => {
         console.log(res)
+        this.router.navigate(['home']);
       }, error: (error) => {
-        alert(error.error.meta.message)
+        console.log(error)
+        this.errorMessageFromServer=error.error.meta.message
+        // alert(error.error.meta.message)
 
       }
     })
@@ -110,18 +204,20 @@ export class LoginComponent implements OnInit {
     if (this.verified == true) {
       this.toPersonalDetails = text;
     }
-    // this.toPersonalDetails = text;
+  
 
   }
-  // get email() {
-  //   return this.contactForm.get('email');
-  // }
 
+  // creating new acc by adding personal details
   onSubmit() {
-    // account creation by adding personal details
+
     console.log(typeof this.contactForm.get('fullname')!.value);
     let urll = "https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/userRegistration"
-    let headers = new HttpHeaders({ 'Authorization': "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6Iis5MTgzMTAyNjc1NjgiLCJpYXQiOjE2NDgyODc5NDh9.lSOdBsHIsmG2TIsFj8F_-djdrXvB4XAvyQYOg3fyUQU" })
+    this.service.jwtToken.subscribe((value) => {
+      this.jwtToken = value;
+      console.log(this.jwtToken)
+    })
+    let headers = new HttpHeaders({ 'Authorization': this.jwtToken })
     this.http.post(urll, {
       "fullName": this.contactForm.get('fullname')!.value,
       "userName": this.contactForm.get('username')!.value,
@@ -133,9 +229,10 @@ export class LoginComponent implements OnInit {
 
         console.log(res)
         let c: any = JSON.stringify(res)
-        if (c.meta.message === "Account created") { //code 201
+        if (c.meta.message === "Account created") { 
           console.log("success")
         }
+        this.router.navigate(['/home'])
 
 
       }, error: (error) => {
@@ -153,152 +250,110 @@ export class LoginComponent implements OnInit {
     console.log(this.myForm.value);
   }
   //changing the forgot password!
-vefifychangepasswordotp(){
-  console.log("vvvvvvvvvvvvvvvv")
-  this.registerContinue = 'continue';
-}
+  vefifychangepasswordotp() {
+    console.log("vvvvvvvvvvvvvvvv")
+    this.registerContinue = 'continue';
+  }
   toChangePassword(text: any) {
     this.swapVariableData = text;
   }
-changePwd(e:any, phnNumberToChangePwd:any){
- 
-  if(phnNumberToChangePwd.length==10){
+  changePwd(e: any, phnNumberToChangePwd: any) {
     
-    let url = "https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/forgot_password/sendOtp"
-    this.http.post<any>(url, { phoneNumber: this.phnNumberToChangePwd }, { observe: 'response' }).subscribe({
-      next: (res) => {
-       
-        if(res.body.meta.message=='OTP sent'){
-          // this.registerContinue = 'continue';
-          console.log(res)
-          this.isVerified="verified";
+    
         
-        }
-        console.log(res)
 
-      }, error: (error) => {
-console.log(error)
-alert(error.error.meta.message)
-        // if (error.error.meta) {
-        //   console.log(error.error.meta.message)
-        //   alert(error.error.meta.message)
-        // }
-        // console.log(this.myNameElem.nativeElement)
-        // this.myNameElem.nativeElement.innerHTML = error.error.message;
+    if (phnNumberToChangePwd.length == 10) {
 
-      }
-    })
-
-  }
-  }
-  RegContinue(text: any): any {
-
-
-
-
-    let url = "https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/register/sendOtp"
-    this.http.post<any>(url, { phoneNumber: this.phoneNumber }, { observe: 'response' }).subscribe({
-      next: (res) => {
-        console.log(res.body.meta.token)
-        this.token = res.body.meta.token
-        console.log("jwt " + this.token)
-        this.jwtToken = "jwt " + this.token
-        this.phnNumberSubmit = true;
-        this.registerContinue = text;
-        this.swapVariableData = text;
-
-      }, error: (error) => {
-
-        if (error.error.meta) {
-          console.log(error.error.meta.message)
-          alert(error.error.meta.message)
-        }
-        // console.log(this.myNameElem.nativeElement)
-        // this.myNameElem.nativeElement.innerHTML = error.error.message;
-
-      }
-    })
-
-  }
-  move(e: any, p: any, c: any, n: any) {
-    this.otp = this.otpDigit1 + this.otpDigit2 + this.otpDigit3 + this.otpDigit4;
-    console.log(this.otpDigit1 + this.otpDigit2 + this.otpDigit3 + this.otpDigit4)
-    const nodeList = document.querySelectorAll<HTMLElement>(".input-field");
-    let len = c.value.length;
-    let maxlength = c.getAttribute('maxlength')
-    if (len == maxlength) {
-      if (n != '') {
-        n.focus();
-
-      }
-      else {
-        for (let i = 0; i < nodeList.length; i++) {
-          nodeList[i].style.borderBottom = '1px solid  #00E217 ';
-
-        }
-
-      }
-      // 
-    }
-    if (e.key == 'Backspace') {
-      // this.verificationCodeNumber.pop()
-      for (let i = 0; i < nodeList.length; i++) {
-        nodeList[i].style.borderBottom = '1px solid rgba(255, 255, 255, 0.4)';
-      }
-      if (p !== '') {
-        p.focus();
-      }
-
-    }
-    this.verificationCodeNumber.push(c.value)
-    console.log(this.verificationCodeNumber)
-    console.log(parseInt(this.verificationCodeNumber.join("")))
-    if (this.otp.toString().length === 4) {
-      console.log(this.otp.toString().length)
-      let urll = "https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/register/verfiyOtp"
-
-      let headers = new HttpHeaders({ 'Authorization': this.jwtToken })
-      this.http.post(urll, { otp: this.otp }, { headers: headers }).subscribe({
+      let url = "https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/forgot_password/sendOtp"
+      this.http.post<any>(url, { phoneNumber: this.phnNumberToChangePwd }, { observe: 'response' }).subscribe({
         next: (res) => {
-          console.log("vv")
-          console.log(res)
-          let b: any = JSON.stringify(res)
-          console.log(b)
-          if (b.meta.code == 200) {
-            this.verified == true
-            this.token = b.meta.token
-          }
 
+          if (res.body.meta.message == 'OTP sent') {
+            
+            this.swapVariableData = 'verifyy';
+            this.isVerified = "verified";
+            console.log(res)
+            this.service.getToken("jwt " + res.body.meta.token)
+            this.service.getUrl("https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/forgot_password/verifyOtp")
+
+
+          }
 
 
         }, error: (error) => {
+          console.log(error)
+          alert(error.error.meta.message)
+         
 
-          if (error.error.meta.code == 404) {
-            for (let i = 0; i < nodeList.length; i++) {
-              nodeList[i].style.borderBottom = '1px solid  red';
-
-            }
-            // console.log(this.errorMessage.nativeElement)
-            // this.errorMessage.nativeElement.innerHTML = error.error.meta.message;
-            // this.errorMessage.nativeElement.class = "alert alert-danger"
-
-          }
         }
       })
 
     }
-  }
-  verify(){
-    this.swapVariableData='verifyy';
-  }
-  fromParent(data:any){
-this.toPersonalDetails=data;
-this.swapVariableData=data;
-console.log(data)
-  }
   
+
+  
+
+
+  }
+  fromParent(data: any) {
+    console.log(data)
+    if(data===true){
+      this.toPersonalDetails = 'verify';
+      this.swapVariableData = 'verify';
+    }
+    
+    console.log(this.toPersonalDetails)
+    console.log(this.swapVariableData)
+    console.log(data)
+  }
+  // move1(e: any, phnNum: any) {
+  //   console.log(phnNum)
+  //   if (e.keyCode === 13 && phnNum.length == 10) {
+  //     e.preventDefault(); 
+  //     this.gotoLogin = false;
+
+  //   }
+    
+    
+  // }
+  move1(e: any) {
+    console.log(this.phnNum.length)
+    let phnno=this.phnNum.toString()
+    if(phnno.length==10){
+      this.gotoLogin = false;
+    }
+  }
+  onChangePassword() {
+    console.log("gii")
+    console.log(this.changepasswordForm.controls)
+    console.log(this.changepasswordForm.value)
+    let urll = "https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/forgot_password/resetPassword"
+
+
+    console.log(this.changepsswordToken)
+
+    let headers = new HttpHeaders({ 'Authorization': this.changepsswordToken })
+    console.log(this.changepasswordForm.get('password')!.value)
+    console.log(this.changepasswordForm.get('confirmPassword')!.value)
+    this.http.post(urll, {
+      "password": this.changepasswordForm.get('password')!.value,
+      "confirmPassword": this.changepasswordForm.get('confirmPassword')!.value
+
+    }, { headers: headers }).subscribe({
+      next: (res) => {
+        console.log(res)
+        this.passwordChangedTemplate=true
+        setTimeout(() => {
+          this.passwordChangedTemplate=false
+        }, 5000);
+        this.router.navigate(['/login'])
+      }, error: (error) => {
+        console.log(error)
+        alert(error.error.meta.message)
+        this.passwordChangedTemplate=false
+
+      }
+    })
+    this.swapVariableData=''
+  }
 }
-
-
-
-

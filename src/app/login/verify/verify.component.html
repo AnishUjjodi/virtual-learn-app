@@ -1,9 +1,11 @@
 
 
-    <img style="margin-top: 20%;" src="assets\images\logo.png">
-    <p class="title-text">Verify Account</p>
+    <img src="assets\images\logo.png"style="margin-top:12%">
+    <p class="title-text">
+      Verify Account
+    </p>
     <br>
-    <p class="after-title">Please fill in the verification code that has been sent to your mobile number.</p>
+    <p  class="title-inner-text" style="font-size:15px;">Please fill in the verification code that has been sent to your mobile number.</p>
     <div class="input-grp">
       <input type="text" name="vcode"   [(ngModel)]="otpDigit1" maxlength="1" #txt1 class="input-field" (keyup)="move($event, '', txt1,txt2)">
       <input type="text" name="vcode" [(ngModel)]="otpDigit2" maxlength="1" #txt2 class="input-field" (keyup)="move($event, txt1, txt2,txt3)">
@@ -11,8 +13,15 @@
       <input type="text" name="vcode" [(ngModel)]="otpDigit4" maxlength="1" #txt4 class="input-field" (keyup)="move($event, txt3, txt4,'')">
     </div>
    <br>
-   <p class="reg-page-last-text">Didn’t recieve a code? <a href="#" style="color:rgba(238, 92, 77, 1);text-decoration: none;">Resend</a> </p>
+   <p class="noCode">Didn’t recieve a code? <span class="Resend" (click)="triggerParent()">Resend</span> </p>
 
 
 
-    <button class="btn-login"  (click)="triggerParent()" style="height: 42px;">Verify</button>
+    <button class="btn-login btn-sm" (click)="triggerParent()"  >Verify</button>
+    <!-- <div *ngIf="wrongOtp===true" class="alert alert-danger">
+     {{errorMessage}}
+    </div> -->
+    <div *ngIf="otpVerificationStatus===false" class="error-display" >
+      {{errorresponseMessage|titlecase}}
+
+    </div>

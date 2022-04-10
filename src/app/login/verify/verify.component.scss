@@ -444,23 +444,26 @@
     
   }
   
-  .title-text{
+  .title-text {
     @include important-text;
     font-size: 28px;
     text-align: center;
     font-weight: 700;
     color: rgba(255, 255, 255, 1);
-    margin-top: 12%;
+    margin-top: 10%;
   }
-  .title-inner-text{
+  
+  .title-inner-text {
     @include important-text;
-    padding-left: 80px;
-    padding-right: 80px;
-    color:(210, 215, 211);;
-    font-size: 18px;
+    padding-left: 10%;
+    padding-right: 10%;
+    color: #FFFFFF;
+    opacity: 60%;
+    font-size: 16px;
     text-align: center;
     font-weight: 700;
-    margin-top: 6%;
+    margin-top: 0%;
+    margin-bottom: 10%;
   }
   
   .login-form-2 button{
@@ -875,4 +878,14 @@
   .errorMsg{
     background-color: #FFFFFF;
     width:200px;
+  }
+  .error-display{
+    width: 100%;
+    height: 30px;
+    background-color: red;
+    position: absolute;
+    color: white;
+    /* height: 100px; */
+    bottom: 0;
+    line-height: 30px;
   }

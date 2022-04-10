@@ -1,0 +1,28 @@
+<!-- <div class="divv">
+    <div class="categorie">
+        <button ><img src="/assets/images/10.png">Design</button>
+        <button ><img src="/assets/images/3.png">Development</button>
+        <button ><img src="/assets/images/4.png">Business</button>
+        <button ><img src="/assets/images/1.png">Finance</button>
+        <button ><img src="/assets/images/11.png">Health & Fitness</button>
+        <button ><img src="/assets/images/2.png">Music</button>
+        <button ><img src="/assets/images/7.png">IT & Software</button>
+        <button ><img src="/assets/images/6.png">Marketing</button>
+        <button ><img src="/assets/images/5.png">Lifestyle</button>
+        <button ><img src="/assets/images/9.png">Photography</button> 
+    </div>
+</div> -->
+<p class="page-name">{{pageNavigationName|titlecase}}</p>
+<div class="containerr">
+    <p style="color:#747474;font-size:1.4vw">Please choose a topic on which you want to start a course.</p>
+<div class="grid-container">
+    <button *ngFor="let category of homeContentData.categories.slice(0,10);let i=index" [routerLink]="['/category-detail', category]">
+        <img src="/assets/images/{{i}}.png">
+        <p>{{category}}</p>
+    </button> 
+    
+  </div>
+ 
+</div>
+
+

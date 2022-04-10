@@ -1,5 +1,7 @@
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CommonService } from 'src/app/services/common.service';
+
 
 
 
@@ -10,25 +12,104 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class VerifyComponent implements OnInit {
 
-  @Output() verification=new EventEmitter<any>()
-  constructor(private http:HttpClient) { }
-  otpDigit1:any;
-  otpDigit2:any;
-  otpDigit3:any;
-  otpDigit4:any;
-  otp:any;
-  token:any;
-  verified:any;
+  @Output() verification = new EventEmitter<any>()
+  subscription: any;
+  constructor(private http: HttpClient, private service: CommonService) { }
+  otpDigit1: any;
+  otpDigit2: any;
+  otpDigit3: any;
+  otpDigit4: any;
+  otp: any;
+  token: any;
+  verified: boolean=false;
+  jwtToken: any;
+  verifyUrl: any;
+  wrongOtp:boolean=false;
+  errorMessage:any;
+  otpVerificationStatus:any
+  errorresponseMessage:any
+  nodeList:any
+
 
   ngOnInit(): void {
+
+    this.subscription = this.service.jwtToken.subscribe((value) => {
+      this.jwtToken = value;
+      console.log(this.jwtToken)
+    })
+    this.service.verifyUrl.subscribe((value) => {
+      this.verifyUrl = value;
+      console.log(this.verifyUrl)
+    })
+ console.log("ngOninit")
   }
-  triggerParent(){
-   this.verification.emit("verify")
-  }
+
+  triggerParent() {
+    
+    setTimeout(() => {
+      console.log(this.verified)
+      // if (this.verified === true) {
+      //   this.verification.emit("verify")
+      //   console.log("triggering parent now")
+      // }
+     
+     }, 1000);
+     console.log(this.otp.toString().length)
+    
+     let url = this.verifyUrl
+     console.log(this.jwtToken)
+     console.log(this.verifyUrl)
+     let headers = new HttpHeaders({ 'Authorization': this.jwtToken })
+
+     this.http.post(url, { otp: this.otp }, { headers: headers }).subscribe({
+       next: (res:any={}) => {
+     
+         console.log(res)
+      
+         let b: any = JSON.stringify(res)
+         console.log(b)
+         console.log(typeof b)
+         if (res.meta.code == 200) {
+           this.verified = true
+           this.token = "jwt " + res.meta.token
+           // this.service.getToken(this.token)
+           this.service.getToken(this.jwtToken)
+           console.log(res.meta)
+           this.otpVerificationStatus=true
+           this.verification.emit(this.otpVerificationStatus)
+         }
+      
+      }, error: (error) => {
+
+        this.otpVerificationStatus=false 
+        this.verification.emit(this.otpVerificationStatus)
+        console.log(error)
+        this.errorresponseMessage=error.error.meta.message
+        for (let i = 0; i < this.nodeList.length; i++) {
+          this.nodeList[i].style.borderBottom = '1px solid red';
+
+
+        }
+
+        
+
+    }
+      })
+     
+    }
+       
+
+
+    
+
+    
+
+  
   move(e: any, p: any, c: any, n: any) {
     this.otp = this.otpDigit1 + this.otpDigit2 + this.otpDigit3 + this.otpDigit4;
+
     console.log(this.otpDigit1 + this.otpDigit2 + this.otpDigit3 + this.otpDigit4)
-    const nodeList = document.querySelectorAll<HTMLElement>(".input-field");
+    this.nodeList = document.querySelectorAll<HTMLElement>(".input-field");
     let len = c.value.length;
     let maxlength = c.getAttribute('maxlength')
     if (len == maxlength) {
@@ -37,64 +118,76 @@ export class VerifyComponent implements OnInit {
 
       }
       else {
-        for (let i = 0; i < nodeList.length; i++) {
-          nodeList[i].style.borderBottom = '1px solid  #00E217 ';
+        this.wrongOtp=false;
+        for (let i = 0; i < this.nodeList.length; i++) {
+          this.nodeList[i].style.borderBottom = '1px solid  #00E217 ';
+
 
         }
-
+      
       }
       // 
     }
     if (e.key == 'Backspace') {
       // this.verificationCodeNumber.pop()
-      for (let i = 0; i < nodeList.length; i++) {
-        nodeList[i].style.borderBottom = '1px solid rgba(255, 255, 255, 0.4)';
+      this.wrongOtp=false;
+      for (let i = 0; i < this.nodeList.length; i++) {
+        this.nodeList[i].style.borderBottom = '1px solid rgba(255, 255, 255, 0.4)';
+        
+
       }
       if (p !== '') {
         p.focus();
       }
 
     }
-   
-  
-    if (this.otp.toString().length === 4) {
-      console.log(this.otp.toString().length)
-      let urll = "https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/register/verfiyOtp"
+    // if (this.otp.toString().length === 4) {
+    //   console.log(this.otp.toString().length)
+    
+    //   let url = this.verifyUrl
+    //   console.log(this.jwtToken)
+    //   console.log(this.verifyUrl)
+    //   let headers = new HttpHeaders({ 'Authorization': this.jwtToken })
 
-      let headers = new HttpHeaders({ 'Authorization': "this.jwtToken "})
+    //   this.http.post(url, { otp: this.otp }, { headers: headers }).subscribe({
+    //     next: (res:any={}) => {
+      
+    //       console.log(res)
+       
+    //       let b: any = JSON.stringify(res)
+    //       console.log(b)
+    //       console.log(typeof b)
+    //       if (res.meta.code == 200) {
+    //         this.verified = true
+    //         this.token = "jwt " + res.meta.token
+    //         // this.service.getToken(this.token)
+    //         this.service.getToken(this.jwtToken)
+    //         console.log(res.meta)
 
-      this.http.post(urll, { otp: this.otp }, { headers: headers }).subscribe({
-        next: (res) => {
-          console.log("vv")
-          console.log(res)
-          let b: any = JSON.stringify(res)
-          console.log(b)
-          if (b.meta.code == 200) {
-            this.verified == true
-            this.token = b.meta.token
-          }
+    //       }
+        
 
 
+    //     }, error: (error) => {
+    //       console.log(error)
+    //       if (error.error.meta.code == 404) {
+    //         this.wrongOtp=true;
+    //        this.errorMessage=error.error.meta.message;
+    //         for (let i = 0; i < nodeList.length; i++) {
+    //           nodeList[i].style.borderBottom = '1px solid  red';
 
-        }, error: (error) => {
+    //         }
+          
 
-          if (error.error.meta.code == 404) {
-            for (let i = 0; i < nodeList.length; i++) {
-              nodeList[i].style.borderBottom = '1px solid  red';
+    //       }
+       
 
-            }
-            // console.log(this.errorMessage.nativeElement)
-            // this.errorMessage.nativeElement.innerHTML = error.error.meta.message;
-           
-          }
-        }
-      })
+      //   }
+      // })
 
-    }
+    // }
 
 
   }
-  // move(e: any, p: any, c: any, n: any) {
-
-  // }
+ 
 }

@@ -1,0 +1,297 @@
+<!-- <button (click)="closeDialog()"></button> -->
+<!-- <app-header></app-header> -->
+<app-login-success *ngIf="successLoginTemplateTime!==10"></app-login-success>
+
+<div class="home-body" *ngIf="successLoginTemplateTime===10">
+    <p>Hello!</p>
+    <h3>Mahendra Singh dhoni</h3>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+              <div class="div">
+                  <div class="dibb">
+                    <img  src={{homeContent.allCourses[0].courseImg}} alt="First slide">
+                    <p>{{homeContent.allCourses[0].courseName}}</p>
+                   <div class="image-bottom-shade"></div>
+                  </div>
+                  <div class="dibb">
+                    <img  src={{homeContent.allCourses[1].courseImg}} alt="First slide">
+                    <p>{{homeContent.allCourses[1].courseName}}</p>
+                    <div class="image-bottom-shade"></div>
+                  </div>
+                  <div class="dibb">
+                    <img  src={{homeContent.allCourses[2].courseImg}} alt="First slide">
+                    <p>{{homeContent.allCourses[2].courseName}}</p>
+                    <div class="image-bottom-shade"></div>
+                  </div>
+              </div>
+              
+          </div>
+          <div class="carousel-item">
+            <div class="div">
+                <div class="dibb">
+                    <img  src={{homeContent.allCourses[3].courseImg}} alt="Second slide">
+                    <p>{{homeContent.allCourses[3].courseName}}</p>
+                    <div class="image-bottom-shade"></div>
+                  </div>
+                  <div class="dibb">
+                    <img  src="https://cdn-images-1.medium.com/max/2000/1*SSutxOFoBUaUmgeNWAPeBA.jpeg" alt="Second slide">
+                    <p>{{homeContent.allCourses[4].courseName}}</p>
+                    <div class="image-bottom-shade"></div>
+                  </div>
+                  <div class="dibb">
+                    <img src="https://a0.anyrgb.com/pngimg/1952/1778/c-programming-language-c-programming-language-generalpurpose-programming-language-compiler-programming-language-source-code-programmer-programming-computer-programming-c-thumbnail.png" alt="Second slide">
+                    <p>C Language course</p>
+                    <div class="image-bottom-shade"></div>
+                  </div>
+
+            </div>
+            
+          </div>
+          <div class="carousel-item">
+            <div class="div">
+                <div class="dibb">
+                    <img  src="https://cdn-images-1.medium.com/max/2000/1*SSutxOFoBUaUmgeNWAPeBA.jpeg" alt="Third slide">
+                    <p>Python course</p>
+                    <div class="image-bottom-shade"></div>
+                  </div>
+                  <div class="dibb">
+                    <img  src="https://1001tricks.com/wp-content/uploads/2011/05/css3-scaled.jpg" alt="Third slide">
+                    <p>CSS course</p>
+                    <div class="image-bottom-shade"></div>
+                  </div>
+                  <div class="dibb">
+                    <img  src="https://pantheon.io/sites/default/files/field/image/TypeScriptImage.jpeg" alt="Third slide">
+                    <p>Typescript course</p>
+                    <div class="image-bottom-shade"></div>
+                  </div>
+           
+            </div>
+           
+          </div>
+          <div class="carousel-item">
+            <div class="div">
+                <div class="dibb">
+                    <img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+                    <p>JAVA course</p>
+                  </div>
+                  <div class="dibb">
+                    <img  src="https://1001tricks.com/wp-content/uploads/2011/05/css3-scaled.jpg" alt="Third slide">
+                    <p>CSS course</p>
+                  </div>
+                  <div class="dibb">
+                    <img  src="https://pantheon.io/sites/default/files/field/image/TypeScriptImage.jpeg" alt="Third slide">
+                    <p>Typescript course</p>
+                  </div>
+           
+            </div>
+           
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+      </div>
+      
+<!-- <div class="heading">
+<p id="left-text">Ongoing course</p>
+<p id="right-text">See all</p>
+</div> -->
+<div class="heading">
+<div class="leftDiv">
+Ongoing course
+</div>
+<div class="rightDiv">
+See all
+</div>
+<div style="clear: both;"></div>
+</div>
+     
+     <div class="ongoing-course" >
+        <div class="dibb" *ngFor="let data of homeContent.ongoingCourses.slice(0,3);let i=index " >
+            <img  src={{data.courseImg}}>
+            <div class="ongoing-inner">
+              <p>{{data.courseName}}</p>
+              <!-- <div class="ongoing-inner-block">
+                
+                <p>{{data.totalChapters}}</p>
+              </div> -->
+                <!-- <p>{{data.category}}</p> -->
+            </div>
+            <div class="image-bottom-shade"></div>
+            
+          </div>
+          
+     </div>
+
+     <div class="categorie">
+        <div class="heading">
+            <div class="leftDiv">
+                Search for categories
+            </div>
+            <div class="rightDiv">
+                <a routerLink="/categories">See All</a>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+       
+        <button (click)="categories('Design')"><img src="/assets/images/10.png">Design</button>
+        <button (click)="categories('Development')"><img src="/assets/images/3.png">Development</button>
+        <button (click)="categories('Business')"><img src="/assets/images/4.png">Business</button>
+        <button (click)="categories('Finance')"><img src="/assets/images/1.png">Finance</button>
+        <button (click)="categories('Health & Fitness')"><img src="/assets/images/0.png">Health & Fitness</button>
+        <button (click)="categories('Music')"><img src="/assets/images/2.png">Music</button>
+        <button (click)="categories('IT & Software')"><img src="/assets/images/7.png">IT & Software</button>
+        <button (click)="categories('Markeeting')"><img src="/assets/images/6.png">Markeeting</button>
+        <button (click)="categories('Lifestyle')"><img src="/assets/images/5.png">Lifestyle</button>
+        <button (click)="categories('Photography')"><img src="/assets/images/9.png">Photography</button>
+        <button (click)="categories('Teaching')"><img src="/assets/images/8.png">Teaching</button>
+        
+    </div>
+      
+    <div class="heading">
+        <div class="leftDiv">
+            Choose your course
+        </div>
+        <div class="rightDiv">
+            See all
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+<div class="choice-container">
+
+<button>All</button>
+<button>popular</button>
+<button>Newest</button>
+
+</div>
+<div class="choice-subcontainer">
+<div class="choice-element">
+<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<button>Design</button>
+<p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
+<p id="choice-chapter">7 Chapter</p>
+
+</div>
+<div class="choice-element">
+<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<button>Design</button>
+<p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
+<p id="choice-chapter">7 Chapter</p>
+
+</div>
+<div class="choice-element">
+<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<button>Design</button>
+<p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
+<p id="choice-chapter">7 Chapter</p>
+
+</div>
+<div class="choice-element">
+<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<button>Design</button>
+<p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
+<p id="choice-chapter">7 Chapter</p>
+
+</div>
+</div>
+
+
+
+
+<div class="heading">
+<div class="leftDiv">
+Top course in Business
+</div>
+<div class="rightDiv">
+See all
+</div>
+<div style="clear: both;"></div>
+</div>
+
+<div class="choice-subcontainer">
+<div class="choice-element">
+<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<button>Design</button>
+<p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
+<p id="choice-chapter">7 Chapter</p>
+
+</div>
+<div class="choice-element">
+<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<button>Design</button>
+<p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
+<p id="choice-chapter">7 Chapter</p>
+
+</div>
+<div class="choice-element">
+<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<button>Design</button>
+<p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
+<p id="choice-chapter">7 Chapter</p>
+
+</div>
+<div class="choice-element">
+<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<button>Design</button>
+<p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
+<p id="choice-chapter">7 Chapter</p>
+
+</div>
+</div>
+
+
+<div class="heading">
+<div class="leftDiv">
+Top course in Design
+</div>
+<div class="rightDiv">
+See all
+</div>
+<div style="clear: both;"></div>
+</div>
+<div class="choice-subcontainer">
+<div class="choice-element">
+<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<button>Design</button>
+<p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
+<p id="choice-chapter">7 Chapter</p>
+
+</div>
+<div class="choice-element">
+<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<button>Design</button>
+<p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
+<p id="choice-chapter">7 Chapter</p>
+
+</div>
+<div class="choice-element">
+<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<button>Design</button>
+<p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
+<p id="choice-chapter">7 Chapter</p>
+
+</div>
+<div class="choice-element">
+<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<button>Design</button>
+<p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
+<p id="choice-chapter">7 Chapter</p>
+
+</div>
+</div>
+
+
+</div>
+

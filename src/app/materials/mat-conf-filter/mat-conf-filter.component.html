@@ -1,0 +1,47 @@
+<div  class="click-searchbar ">
+    <button (click)='closeDialog()' id="x-button"[mat-dialog-close]='false'>X</button>
+    <div class="inner-dialog-content">
+        <div class="filter-dialog-header">
+         
+            <p>Search Filters</p>
+           
+        </div>
+        
+        <div class="filter-dialog-content">
+ 
+            <div class="categorie">
+                <p>Search for categories</p>
+                <button (click)="categorie('Design',durations,1)" [ngClass]="{clicked:buttonNumber===1}"><img src="/assets/images/10.png">Design</button>
+                <button (click)="categorie('Development',durations,2)" [ngClass]="{clicked:buttonNumber===2}"><img src="/assets/images/3.png">Development</button>
+                <button (click)="categorie('Business',durations,3)" [ngClass]="{clicked:buttonNumber===3}"><img src="/assets/images/4.png">Business</button>
+                <button (click)="categorie('Finance',durations,4)" [ngClass]="{clicked:buttonNumber===4}"><img src="/assets/images/1.png">Finance</button>
+                <button (click)="categorie('Health & Fitness',durations,5)" [ngClass]="{clicked:buttonNumber===5}"><img src="/assets/images/0.png">Health & Fitness</button>
+                <button (click)="categorie('Music',durations,6)" [ngClass]="{clicked:buttonNumber===6}"><img src="/assets/images/2.png">Music</button>
+                <button (click)="categorie('IT & Software',durations,7)" [ngClass]="{clicked:buttonNumber===7}"><img src="/assets/images/7.png">IT & Software</button>
+                <button (click)="categorie('Marketing',durations,8)" [ngClass]="{clicked:buttonNumber===8}"><img src="/assets/images/6.png">Marketing</button>
+                <button (click)="categorie('Lifestyle',durations,9)" [ngClass]="{clicked:buttonNumber===9}"><img src="/assets/images/5.png">Lifestyle</button>
+                <button (click)="categorie('Photography',durations,10)" [ngClass]="{clicked:buttonNumber===10}"><img src="/assets/images/9.png">Photography</button>
+                <button (click)="categorie('Teaching',durations,11)" [ngClass]="{clicked:buttonNumber===11}"><img src="/assets/images/8.png">Teaching</button>
+            </div>
+    
+            <div class="duration">
+                <p>Duration</p>
+                <button (click)="categorie(categories,'5/10',12)"[ngClass]="{clicked:durationButton===12}">5/10 Chapter</button>
+                <button (click)="categorie(categories,'10/20',13)"[ngClass]="{clicked:durationButton===13}">10/20 Chapter</button>
+                <button (click)="categorie(categories,'20/30',14)"[ngClass]="{clicked:durationButton===14}">20/30 Chapter</button>
+                <button (click)="categorie(categories,'30/40',15)"[ngClass]="{clicked:durationButton===15}">30/40 Chapter</button>
+                <button (click)="categorie(categories,'50+',16)"[ngClass]="{clicked:durationButton===16}">50+ Chapter</button>
+            </div>
+           
+         
+           
+    </div>
+    
+   
+    </div>
+    <div class="clear-apply-button">
+        <button  class="apply-button" [mat-dialog-close]='true'(click)='applyFilter()'>Apply Filter</button>
+        <button  class="clear-button"(click)='clearFilter()'>Clear All</button>
+    </div> 
+   
+

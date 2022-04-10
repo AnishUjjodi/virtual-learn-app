@@ -1,2 +1,4 @@
-
-<app-login></app-login>
+<!-- <app-intro></app-intro> -->
+<app-header *ngIf="routerPath!=='/login'"></app-header>
+<router-outlet></router-outlet>
+<!-- <app-login></app-login> -->

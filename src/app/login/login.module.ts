@@ -7,12 +7,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { VerifyComponent } from './verify/verify.component';
+import { CoreModule } from '../core/core.module';
+import { SuccessPasswordChangedComponent } from './success-password-changed/success-password-changed.component';
+
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    VerifyComponent
+    VerifyComponent,
+    SuccessPasswordChangedComponent
   ],
   imports: [
     CommonModule,
@@ -20,6 +24,7 @@ import { VerifyComponent } from './verify/verify.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
+    
   ],
   exports:[LoginComponent]
 })

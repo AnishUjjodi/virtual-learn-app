@@ -1,0 +1,84 @@
+<div class="header">
+    <div class="logo-searchbar">
+        <img src="assets\images\logo2.png">
+        <div class="input-searchbutton">
+            <input type="text" class="form-control" placeholder="Enter your phone number"(blur)="filterunToggle()" (focus)="filterToggle()" [(ngModel)]="searchInfo" (keyup.enter)="onSearchEnter()">
+            <button  class="search-button" (click)="onSearchEnter()">
+                <i class="fa fa-search" ></i>
+            </button>
+            <button class="filter-button" (click)="filterDialog()" [disabled]="filterDialogBox">
+                <img src="/assets/images/filter.png">
+            </button>
+        </div>
+       
+       
+        <div class="right-header-content" *ngIf="!toggle ;else buttonX">
+            <button><i class='far fa-bell'></i></button>
+            <button class="setting-icon"><img src="/assets/images/setting-icon.png"></button>
+
+
+           <!-- <div class=""><a routerLink="/login"></a></div> -->
+
+
+           <div class="dropdown profil-details">
+            <button  type="button" (click)="dropdownToggled()">
+                <img src="/assets/images/dhoni.png">
+            </button>
+            <div *ngIf="dropdownToggle" class="dropdown-menu" >
+              <a  href="#"><p>My Course</p></a>
+              <a (click)="openDialog('profile')"><p>My Profile</p></a>
+              <a  href="#"><p>Logout</p></a>
+            </div>
+          </div>
+        </div> 
+         <ng-template #buttonX>
+            <a style="min-width: 146px;"(click)="removeAllToggle()">X</a>
+        </ng-template>  
+    </div>
+    <div *ngIf="searchContentStatus===400" class="search-result">
+        <p>No match course</p>
+        <p>Try a different search or browser categories</p>
+    </div> 
+     <!-- <ng-template #e> -->
+       <div class="search-result-main" *ngIf="searchContentStatus===200&&searchButtonStatus===true;">
+        <div  class="search-result-content" *ngFor="let user of searchContent.data; index as i">
+            <img src={{user.courseImg}} alt="" >
+            <div class="search-result-inner-content">
+                <p>{{user.courseName|titlecase}}</p>
+                <p style="font-size:14px;font-weight:100;color: #373737;margin-bottom: 8px;">{{user.totalChapters}} chapter</p> 
+                <p class="p-category">{{user.category|titlecase}}</p>
+            </div>
+            <hr>
+            
+        </div>
+        <hr>
+       </div>
+       
+    <!-- </ng-template> -->
+        <div *ngIf="toggle&&searchContentStatus!==200" class="click-searchbar ">
+            <div class="div">
+                
+                <div class="categorie">
+                    <p>Search for categories</p>
+                    <button (click)="categories('Design')"><img src="/assets/images/10.png">Design</button>
+                    <button (click)="categories('Development')"><img src="/assets/images/3.png">Development</button>
+                    <button (click)="categories('Business')"><img src="/assets/images/4.png">Business</button>
+                    <button (click)="categories('Finance')"><img src="/assets/images/1.png">Finance</button>
+                    <button (click)="categories('Health & Fitness')"><img src="/assets/images/0.png">Health & Fitness</button>
+                    <button (click)="categories('Music')"><img src="/assets/images/2.png">Music</button>
+                    <button (click)="categories('IT & Software')"><img src="/assets/images/7.png">IT & Software</button>
+                    <button (click)="categories('Markeeting')"><img src="/assets/images/6.png">Markeeting</button>
+                    <button (click)="categories('Lifestyle')"><img src="/assets/images/5.png">Lifestyle</button>
+                    <button (click)="categories('Photography')"><img src="/assets/images/9.png">Photography</button>
+                    <button (click)="categories('Teaching')"><img src="/assets/images/8.png">Teaching</button>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    
+  
+</div>
+
+

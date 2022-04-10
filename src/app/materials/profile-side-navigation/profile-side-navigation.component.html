@@ -1,0 +1,781 @@
+<!-- <div class="profileHeader">
+                        
+    <div class="close">
+        <img src="assets\images\close.png" (click)="closeModal()" >
+    </div>
+    
+    <div class="profile">
+        <div class="leftDiv">
+            <h5>Profile</h5>
+        </div>
+        <div class="rightDiv">
+            <img src="assets\images\edit.png" (click)="EditORchangePassword('edit')" />
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="profil-image-name">
+        
+        <img src="/assets/images/profile.png" width="80px" height="80px" alt="" />
+        <div class="div">
+            <p class="fullname-text">{{ fullname }}</p>
+            <p class="role">{{ occupation }}</p>
+        </div>
+    </div>
+</div> -->
+
+<div class="fluid-container">
+  <div [ngSwitch]="NavbarIcon">
+    <div *ngSwitchCase="'profile'">
+      <div class="personal-details" [ngSwitch]="editOrChangepassword">
+        <div *ngSwitchCase="'edit'">
+          <div class="CommonHeader">
+            <img
+              class="text-start"
+              src="assets\images\white-back.jpg"
+              alt=""
+              style="margin-left: -328px"
+              (click)="EditORchangePassword(' ')"
+            />
+            <p class="text-start edit-header-text">Edit Profile</p>
+            <img src="{{ profileImgSrc }}" width="80px" height="80px" alt="" />
+          </div>
+          <div class="CommonBody" style="padding-top: 10%">
+            <form
+              class="profileForm"
+              [formGroup]="profileForm"
+              (ngSubmit)="onSubmitProfileForm()"
+              novalidate
+            >
+              <div class="input-grp">
+                <input
+                  type="text"
+                  id="fullname"
+                  name="fullname"
+                  class="form-control register-number"
+                  placeholder="Full Name"
+                  formControlName="fullname"
+                />
+                <label
+                  style="
+                    transform: translateY(-1.5em);
+                    left: 10%;
+                    position: absolute;
+                  "
+                  for="fullname"
+                  class="form-label text-start"
+                  >Full Name</label
+                >
+              </div>
+              <div class="input-grp">
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  class="form-control register-number"
+                  placeholder="Username"
+                  formControlName="username"
+                />
+                <label
+                  style="
+                    transform: translateY(-1.5em);
+                    left: 10%;
+                    position: absolute;
+                  "
+                  for="fullname"
+                  for="username"
+                  class="form-label"
+                  >Username</label
+                >
+              </div>
+              <div class="input-grp">
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  class="form-control register-number"
+                  placeholder="Email Id"
+                  formControlName="email"
+                />
+                <label
+                  style="
+                    transform: translateY(-1.5em);
+                    left: 10%;
+                    position: absolute;
+                  "
+                  for="email"
+                  class="form-label"
+                  >Email ID</label
+                >
+              </div>
+              <div class="input-grp">
+                <input
+                  type="text"
+                  id="mobileNumber"
+                  name="mobileNumber"
+                  class="form-control register-number"
+                  formControlName="mobileNumber"
+                  placeholder="Mobile Number"
+                />
+                <label
+                  style="
+                    transform: translateY(-1.5em);
+                    left: 10%;
+                    position: absolute;
+                  "
+                  for="mobileNumber"
+                  class="form-label"
+                >
+                  Mobile Number
+                </label>
+              </div>
+              <div class="input-grp">
+                <input
+                  type="text"
+                  id="occupation"
+                  name="occupation"
+                  class="form-control register-number"
+                  formControlName="occupation"
+                  placeholder="Occupation"
+                />
+                <label
+                  for="occupation"
+                  class="form-label"
+                  style="
+                    transform: translateY(-1.5em);
+                    left: 10%;
+                    position: absolute;
+                  "
+                  >Occupation
+                </label>
+              </div>
+              <div class="input-grp">
+                <select
+                  name="gender"
+                  class="form-control register-number"
+                  formControlName="gender"
+                >
+                  <option value="male">Male</option>
+                  <span class="text-end">^</span>
+                  <option value="female">Female</option>
+
+                  <option value="non-binary">Non-Binary</option>
+                  <option value="other">Other</option>
+                  <option value="Prefer not to answer">
+                    Perfer not to Answer
+                  </option>
+                </select>
+                <label
+                  for="gender"
+                  class="form-label"
+                  style="
+                    transform: translateY(-1.5em);
+                    left: 10%;
+                    position: absolute;
+                  "
+                  >Gender:</label
+                >
+              </div>
+              <div class="input-grp">
+                <input
+                  type="text"
+                  id="DOB"
+                  name="DOB"
+                  class="form-control register-number"
+                  formControlName="DOB"
+                  placeholder="Date Of Birth"
+                />
+                <label
+                  for="DOB"
+                  class="form-label"
+                  style="
+                    transform: translateY(-1.5em);
+                    left: 10%;
+                    position: absolute;
+                  "
+                  >Date of Birth</label
+                >
+              </div>
+              <div class="input-grp">
+                <input
+                  type="text"
+                  id="twitterLink"
+                  name="twitterLink"
+                  class="form-control register-number"
+                  formControlName="twitterLink"
+                  placeholder="Twitter Link"
+                />
+                <label
+                  for="DOB"
+                  class="form-label"
+                  style="
+                    transform: translateY(-1.5em);
+                    left: 10%;
+                    position: absolute;
+                  "
+                  >Twitter Link
+                </label>
+              </div>
+              <div class="input-grp">
+                <input
+                  type="text"
+                  id="facebookLink"
+                  name="facebookLink"
+                  class="form-control register-number"
+                  formControlName="facebookLink"
+                  placeholder="Facebook Link"
+                />
+                <label
+                  for="DOB"
+                  class="form-label"
+                  style="
+                    transform: translateY(-1.5em);
+                    left: 10%;
+                    position: absolute;
+                  "
+                  >Facebook Link
+                </label>
+              </div>
+              <button type="submit" class="btn-login" style="margin: 0">
+                Save
+              </button>
+            </form>
+          </div>
+        </div>
+        <div *ngSwitchCase="'changePassword'">
+          <div class="CommonHeader">
+            <img
+              class="text-start"
+              src="assets\images\white-back.jpg"
+              alt=""
+              style="margin-left: -328px; background-color: transparent"
+              (click)="EditORchangePassword(' ')"
+            />
+            <p class="text-start edit-header-text">Change your Password</p>
+
+            <p class="text-start edit-header-text" style="font-size: 18px">
+              Your password must have at least 6 or more characters
+            </p>
+          </div>
+          <div class="CommonBody" style="padding: 10%">
+            <form
+              class="changepasswordForm"
+              [formGroup]="changepasswordForm"
+              #changepasswordRef
+              (ngSubmit)="onSubmit()"
+              novalidate
+            >
+              <div class="input-grp">
+                <input
+                  type="text"
+                  id="currentPassword"
+                  (focus)="Onfocus('currentPassword')"
+                  name="currentPassword"
+                  class="form-control"
+                  formControlName="currentPassword"
+                  placeholder="Current Password"
+                />
+                <label
+                  for="currentPassword"
+                  class="form-label"
+                  style="
+                    transform: translateY(-1.5em);
+                    left: 10%;
+                    position: absolute;
+                  "
+                  >Current Password
+                </label>
+
+                <div
+                  *ngIf="
+                    f['currentPassword'].errors !== null &&
+                    f['currentPassword'].dirty
+                  "
+                >
+                  <img
+                    src="/assets/images/invalidtext.png"
+                    width="24px"
+                    height="24px"
+                    alt=""
+                  />
+                </div>
+                <div
+                  *ngIf="
+                    f['currentPassword'].errors === null &&
+                    f['currentPassword'].dirty
+                  "
+                >
+                  <img src="/assets/images/successtick.png" alt="" />
+                </div>
+              </div>
+
+              <div class="input-grp">
+                <input
+                  type="text"
+                  id="newPassword"
+                  (focus)="Onfocus('newPassword')"
+                  name="newPassword"
+                  class="form-control"
+                  formControlName="newPassword"
+                  placeholder="New Password"
+                />
+                <label
+                  for="newPassword"
+                  class="form-label"
+                  style="
+                    transform: translateY(-1.5em);
+                    left: 10%;
+                    position: absolute;
+                  "
+                  >New Password
+                </label>
+                <div
+                  *ngIf="
+                    f['newPassword'].errors !== null && f['newPassword'].dirty
+                  "
+                >
+                  <img
+                    src="/assets/images/invalidtext.png"
+                    width="24px"
+                    height="24px"
+                    alt=""
+                  />
+                </div>
+                <div
+                  *ngIf="
+                    f['newPassword'].errors === null && f['newPassword'].dirty
+                  "
+                >
+                  <img src="/assets/images/successtick.png" alt="" />
+                </div>
+              </div>
+
+              <div class="input-grp">
+                <input
+                  type="text"
+                  id="confirmPassword"
+                  (focus)="Onfocus('confirmPassword')"
+                  name="confirmPassword"
+                  class="form-control"
+                  formControlName="confirmPassword"
+                  placeholder="Confirm Password"
+                />
+                <label
+                  for="confirmPassword"
+                  class="form-label"
+                  style="
+                    transform: translateY(-1.5em);
+                    left: 10%;
+                    position: absolute;
+                  "
+                  >Confirm Password
+                </label>
+                <div
+                  *ngIf="
+                    f['confirmPassword'].errors !== null &&
+                    f['confirmPassword'].dirty
+                  "
+                >
+                  <img
+                    src="/assets/images/invalidtext.png"
+                    width="24px"
+                    height="24px"
+                    alt=""
+                  />
+                </div>
+
+                <div
+                  *ngIf="
+                    f['confirmPassword'].errors === null &&
+                    f['confirmPassword'].dirty
+                  "
+                >
+                  <img src="/assets/images/successtick.png" alt="" />
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn-login"
+                style="margin: 0"
+                (click)="resetPassword()"
+              >
+                Reset Password
+              </button>
+            </form>
+          </div>
+
+          <div
+            *ngIf="(f[formControlNameError].touched||isFormSubmitted)&&(f[formControlNameError].errors?.['required'])||(f[formControlNameError].errors?.['minlength'])||(f[formControlNameError].errors?.['pattern'])||(f[formControlNameError].errors?.['matching'])"
+          >
+            <div
+              class="alert-danger"
+              *ngIf="(f[formControlNameError].errors?.['required'])"
+            >
+              <img
+                src="/assets/images/white-error.png"
+                alt=""
+                width="24px"
+                height="24px"
+              />
+              {{ formControlNameError }} required
+            </div>
+            <div
+              class="alert-danger"
+              *ngIf="(f[formControlNameError].errors?.['minlength'])"
+            >
+              <img
+                src="/assets/images/white-error..png"
+                alt=""
+                width="24px"
+                height="24px"
+              />
+              {{ formControlNameError }} min lenght required
+            </div>
+            <div
+              class="alert-danger"
+              ;
+              *ngIf="(f[formControlNameError].errors?.['email'])"
+            >
+              <img
+                src="/assets/images/white-error.png"
+                alt=""
+                width="24px"
+                height="24px"
+              />
+              {{ formControlNameError }} is invalid
+            </div>
+            <div
+              class="alert-danger"
+              *ngIf="(f[formControlNameError].errors?.['pattern'])"
+            >
+              <img
+                src="/assets/images/white-error.png"
+                alt=""
+                width="24px"
+                height="24px"
+              />
+              {{ formControlNameError }} pattern is wrong
+            </div>
+
+            <div
+              class="alert-danger"
+              *ngIf="(f[formControlNameError].errors?.['matching'])"
+            >
+              <img
+                src="/assets/images/white-error.png"
+                alt=""
+                width="24px"
+                height="24px"
+              />
+              {{ formControlNameError }} has not matched
+            </div>
+          </div>
+        </div>
+        <div *ngSwitchDefault>
+          <div class="profileHeader">
+            <div class="divv">
+              <img src="/assets/images/profile.png" />
+            </div>
+            <img
+              src="/assets/images/close.png"
+              (click)="closeModal()"
+              class="close"
+            />
+            <div class="row text-start" style="margin-top: 10%">
+              <br />
+              <div class="col-6 text-start">
+                <h6 class="profile" style="margin: 0">Profile</h6>
+                <br />
+              </div>
+              <div class="col-6 text-end" style="line-height: 40px">
+                <img
+                  src="/assets/images/edit.png"
+                  width="20px"
+                  height="20px"
+                  (click)="EditORchangePassword('edit')"
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-3">
+                <img
+                  class="profile-image"
+                  src="/assets/images/profile.png"
+                  width="80px"
+                  height="80px"
+                  alt=""
+                />
+                <!-- {{profileImgSrc}} -->
+              </div>
+              <div class="col-9 text-start">
+                <p class="fullname-text" style="margin: 0; margin-top: 4px">
+                  {{ fullname }}
+                </p>
+                <p class="role">
+                  {{ occupation | titlecase }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="profileBody">
+            <div class="row courese-list">
+              <div class="col-4 box text-center">
+                <p class="num">{{ course }}</p>
+                Courses
+              </div>
+              <div class="col-4 box">
+                <p class="num">{{ chapters }}</p>
+                Chapters
+              </div>
+              <div class="col-4 box">
+                <p class="num">{{ test }}</p>
+                Test
+              </div>
+            </div>
+            <p class="text-start personal-details">Personal Details</p>
+            <table class="table table-border">
+              <tbody>
+                <tr>
+                  <td class="text-start field">Name</td>
+                  <td class="text-end value">{{ fullname }}</td>
+                </tr>
+                <tr>
+                  <td class="text-start field">Username</td>
+                  <td class="text-end value">{{ Username }}</td>
+                </tr>
+                <tr>
+                  <td class="text-start field">Email ID</td>
+                  <td class="text-end value">{{ EmailID }}</td>
+                </tr>
+                <tr>
+                  <td class="text-start field">Mobile Number</td>
+                  <td class="text-end value">{{ MobileNumber }}</td>
+                </tr>
+                <tr>
+                  <td class="text-start field">Occupation</td>
+                  <td class="text-end value">{{ occupation }}</td>
+                </tr>
+                <tr>
+                  <td class="text-start field">Date of Birth</td>
+                  <td class="text-end value">{{ DOB }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="row privacy-box">
+              <div class="col-1 align-items-center icon-box">
+                <img
+                  class="privacy"
+                  src="assets\images\privacy.png"
+                  width="10px"
+                  height="10px"
+                />
+                <img class="white-tick" src="assets\images\white-tick.png" />
+              </div>
+              <div class="col-8">
+                <p class="text-start privacy-text">Privacy</p>
+                <p class="text-start change-password">Change Password</p>
+              </div>
+              <div class="col-2">
+                <img
+                  src="assets\images\right-angular.jpg"
+                  (click)="EditORchangePassword('changePassword')"
+                  width="13px"
+                  height="15px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngSwitchCase="'notifications'">Two</div>
+    <div *ngSwitchCase="'settings'">
+      <div [ngSwitch]="privacyOrTOS">
+        <div *ngSwitchCase="'Privacy Policy'">
+          <div class="settings-header">
+            <img
+              src="assets\images\white-back.jpg"
+              alt=""
+              (click)="isPrivacyOrTOS(' ')"
+            />
+            <p class="text-start profile" style="padding-top: 5%">
+              Privacy Policy
+            </p>
+          </div>
+          <div class="text-justify settings-body-text">
+            <p class="content">
+              These Terms of Services ("Terms") were last updated on September
+              16, 2020.
+            </p>
+
+            <p class="content">
+              VirtualLearn’s mission is to improve lives through learning. We
+              enable anyone anywhere to create and share educational courses
+              (instructors) and to enroll in these educational courses to learn
+              (students). We consider our marketplace model the best way to
+              offer valuable educational content to our users. We need rules to
+              keep our platform and services safe for you, us and our student
+              and instructor community. These Terms apply to all your activities
+              on the VirtualLearn mobile application and our APIs and other
+              related services (“Services”).
+            </p>
+
+            <p class="content">
+              If you publish a course on the VirtualLearn platform, you must
+              also agree to the Instructor Terms. If you are using VirtualLearn
+              as part of your employer’s VirtualLearn For Business learning and
+              development program, you can consult our VirtualLearn for Business
+              Privacy Statement.
+            </p>
+          </div>
+        </div>
+        <div *ngSwitchCase="'Terms Of Services'">
+          <div class="settings-header">
+            <img
+              src="assets\images\white-back.jpg"
+              alt=""
+              style="margin-left: -328px"
+              (click)="isPrivacyOrTOS(' ')"
+            />
+            <p class="text-start profile" style="padding-top: 5%">
+              Terms Of Services
+            </p>
+          </div>
+          <div class="text-justify settings-body-text">
+            <p class="text-justify content">
+              These Terms of Services ("Terms") were last updated on September
+              16, 2020.
+            </p>
+
+            <p class="text-justify content">
+              VirtualLearn’s mission is to improve lives through learning. We
+              enable anyone anywhere to create and share educational courses
+              (instructors) and to enroll in these educational courses to learn
+              (students). We consider our marketplace model the best way to
+              offer valuable educational content to our users. These Terms apply
+              to all your activities on the VirtualLearn mobile application and
+              our APIs and other related services (“Services”).
+            </p>
+
+            <p class="text-justify content">
+              If you publish a course on the VirtualLearn platform, you must
+              also agree to the Instructor Terms. We also provide details
+              regarding our processing of personal data of our students and
+              instructors in our Privacy Policy. If you are using VirtualLearn
+              as part of your employer’s VirtualLearn For Business learning and
+              development program, you can consult our VirtualLearn for Business
+              Privacy Statement.
+            </p>
+          </div>
+        </div>
+        <div *ngSwitchDefault>
+          <div class="settings-header">
+            <img
+              src="assets\images\close.jpg"
+              class="close"
+              style="padding-bottom: 4%"
+              (click)="closeModal()"
+            />
+            <p class="profile text-start">Settings</p>
+          </div>
+
+          <div class="settings-body">
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td class="text-start">
+                    <img
+                      src="assets\images\settings.jpg"
+                      width="17px"
+                      height="17px"
+                    />
+                  </td>
+                  <td class="text-start main-text">Notifications Settings</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="text-start sub-text">&nbsp;Push Notifications</td>
+                  <td class="text-start">
+                    <ui-switch
+                      [checked]="true"
+                      (change)="onChange($event)"
+                    ></ui-switch>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 20px solid transparent">
+                  <td></td>
+                  <td class="text-start sub-text">&nbsp;Notifications Sound</td>
+                  <td class="text-start">
+                    <ui-switch
+                      [checked]="false"
+                      (change)="onChange($event)"
+                    ></ui-switch>
+                  </td>
+                </tr>
+                <tr
+                  style="border-bottom: 1px solid rgb(200, 200, 200, 0.5)"
+                ></tr>
+                <tr>
+                  <td class="text-start">
+                    <img
+                      src="assets\images\settings.jpg"
+                      width="17px"
+                      height="17px"
+                    />
+                  </td>
+                  <td class="text-start main-text">Privacy Policy</td>
+                  <td
+                    class="text-center"
+                    (click)="isPrivacyOrTOS('Privacy Policy')"
+                  >
+                    <img
+                      src="assets\images\right-angular.jpg"
+                      width="13px"
+                      height="15px"
+                    />
+                  </td>
+                </tr>
+
+                <tr
+                  style="
+                    border-bottom: 1px solid rgb(200, 200, 200, 0.5);
+                    border-top: 12px solid transparent;
+                  "
+                ></tr>
+                <tr>
+                  <td class="text-start">
+                    <img
+                      src="assets\images\settings.jpg"
+                      width="17px"
+                      height="17px"
+                    />
+                  </td>
+                  <td class="text-start main-text">Terms Of Services</td>
+                  <td
+                    class="text-center"
+                    (click)="isPrivacyOrTOS('Terms Of Services')"
+                  >
+                    <img
+                      src="assets\images\right-angular.jpg"
+                      width="13px"
+                      height="15px"
+                    />
+                  </td>
+                </tr>
+                <tr
+                  style="
+                    border-bottom: 1px solid rgb(200, 200, 200, 0.5);
+                    border-top: 12px solid transparent;
+                  "
+                ></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

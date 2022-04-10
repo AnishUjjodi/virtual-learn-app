@@ -1,0 +1,328 @@
+
+  // .fluid-container {
+ 
+  //   position: relative;
+  //     background: #FEFEFF;
+  //     width: 100%;
+  //     height: 100%;
+  //     top: 0;
+  //     left: 0;
+    
+  //     .profileHeader {
+  //       position: relative;
+  //       display: block;
+  //       background-image: url(/assets/images/profile.png);
+  //       background-repeat: no-repeat;
+  //       background-size: cover;
+  //       background-position-y: center;
+  //       height: 274px;
+  //       left: 0;
+  //       top: 0;
+  //       .close{
+  //         position: absolute;
+  //         left: 0;
+  //         top: 10px;
+  //       }
+         
+  //       .profile{
+  
+  //         position: absolute;
+  //         width: 100%;
+  //         left: 0;
+           
+  //       .leftDiv {
+  //           font-weight: 500;
+  //           color: white;
+  //           font-size: 16px;
+            
+  //           float: left;
+  //       }
+  //       .rightDiv {
+  //           float: right;
+  //           font-size: 16px;
+  //           color: white;
+  //       }
+  //       }
+  
+  //       .profil-image-name{
+        
+  //         display: flex;
+  //         justify-content: start;
+  //         position: absolute;
+  //         bottom: 0;
+  //         left: 0;
+  //        img{
+  //         margin-right: 10px;
+  //        }
+  
+  //        .div{
+  //          display: block;
+  //          .fullname-text {
+  //           @include font-style('Proxima Nova Soft', normal, 700, 22px, 26px, #FFFFFF);
+  //           margin: 10px;
+      
+  //         }
+      
+  //         .role {
+  //           @include font-style('Proxima Nova Soft', normal, 700, 18px, 26px, #FFFFFF);
+  //         }
+  //        }
+  
+  //       }
+    
+      
+        
+    
+  //     }
+
+@mixin font-style($family, $style, $weight, $size, $line-height, $color) {
+    font-family: $family;
+    font-style: $style;
+    font-weight: $weight;
+    font-size: $size;
+    line-height: $line-height;
+  
+    color: $color;
+  }
+  
+  .fluid-container {
+
+    width: 100%;
+    height: 100%;
+   
+    background: #FEFEFF;
+  
+    .profileHeader {
+      position: relative;
+      background-color: #042C5C;
+      // opacity: 0.9;
+      padding: 13px;
+      
+      height: 210px;
+  
+      .close {
+        width: 23px;
+      position: absolute;
+      left: 10px;
+  
+      }
+
+      .divv{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+       
+        height: 100%;
+      //   background-image: url("/assets/images/profile.png");
+      // background-repeat: no-repeat;
+      // background-size: cover;
+      // background-position-y: center;
+       
+        opacity: 0.6;
+        img{
+          
+          width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+      }
+      }
+      .profile-image{
+        border: 1px solid rgba(245, 245, 245, 0.253);
+        border-radius: 12px;
+      }
+    
+      .fullname-text {
+        @include font-style('proxima-nova-soft', normal, 700, 22px, 26px, #FFFFFF);
+        margin: 10px;
+  
+      }
+  
+      .role {
+        @include font-style('proxima-nova-soft', normal, 700, 18px, 26px, #FFFFFF);
+      }
+  
+    }
+  
+    .profileBody {
+      background: #FFFFFF;
+      opacity: 0.9;
+      padding: 13px;
+  
+      .courese-list {
+        justify-content: space-evenly;
+  
+        .box {
+  
+          box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
+          border-radius: 6px;
+          margin: 10px;
+          padding: 17px;
+          width: 110px;
+          height: 100px;
+          padding-top: 4%;
+  
+          .num {
+            @include font-style('proxima-nova-soft', normal, 700, 40px, 26px, #36B6F1);
+            margin-bottom: 11%;
+          }
+        }
+      }
+  
+      .personal-details {
+        @include font-style('proxima-nova-soft', normal, 700, 20px, 26px, #373737);
+        padding-top: 3%;
+      }
+  
+      .field {
+        @include font-style('proxima-nova-soft', normal, 700, 20px, 26px, #7A7A7A);
+      }
+  
+      .value {
+        @include font-style('proxima-nova-soft', normal, 700, 20px, 26px, #373737);
+      }
+  
+      .privacy-box {
+        box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
+        border-radius: 2px;
+        align-items: center;
+  
+        .icon-box {
+          height: 60px;
+          width: 60px;
+          background: #DFE7F5;
+          border-radius: 6px;
+          position: relative;
+  
+          .privacy {
+           position: absolute;
+          
+           
+            width: 70%;
+            height: 69%;
+            top: 8px;
+    left: 10px;
+          }
+
+          .white-tick{
+            width: 22px;
+            position: absolute;
+            top: 21px;
+    left: 20px;
+          }
+        }
+  
+        .privacy-text {
+          @include font-style('proxima-nova-soft', normal, 700, 20px, 26px, #072D5B);
+          margin-bottom: 5px;
+          margin-top: 4%;
+        }
+  
+        .change-password {
+          @include font-style('proxima-nova-soft', normal, 700, 18px, 26px, #7A7A7A);
+        }
+      }
+    }
+  
+    .CommonHeader {
+      background: #042C5C;
+      opacity: 0.9;
+      padding: 13px;
+  
+      .edit-header-text {
+        @include font-style('proxima-nova-soft', normal, 700, 28px, 35px, #FFFFFF);
+        margin-top: 5%;
+      }
+    }
+  
+    .CommonBody {
+        background: #FFFFFF;
+        opacity: 0.9;
+        padding-top: 10%;
+        padding-left: 10%;
+        padding-right: 10%;
+  
+      .form-label {
+        transform-origin: 0 0;
+        color: transparent;
+  
+      }
+  
+      .form-control {
+        box-shadow: none;
+        border-color: #ccc;
+        border-style: none none solid none;
+        width: 100%;
+        transition: all .5s;
+        padding: 0px;
+        @include font-style('Avenir', normal, 500, 20px, 27px, #072D5B);
+  
+      }
+  
+      .form-control::placeholder {
+        @include font-style('Avenir', normal, 400, 16px, 22px, #7A7A7A);
+  
+      }
+      .form-control:focus::placeholder {
+        color: transparent;
+      }
+      .form-control:focus+.form-label,
+      .form-control:not(:placeholder-shown)+.form-label {
+        @include font-style('Avenir', normal, 400, 16px, 22px, #7A7A7A);
+        transform-origin: 0 0;
+      }
+      select {
+        -webkit-appearance: listbox !important
+      }
+      button{
+       width:100%;
+       height:44px; 
+      background: #EE5C4D;
+      border-radius: 6px;
+      color:white;
+      }
+    }
+    .alert-danger{
+        margin-top: 73%;
+        background-color: red;
+        color: white;
+        padding: 1%;
+    }
+  }
+  
+  .input-grp{
+  display: flex;
+  padding-bottom: 10%;
+  }
+ 
+  .settings-header{
+    height:20%;
+    background-color: #042C5C;
+    height: 130px;
+    padding: 5%
+  }
+  .settings-body{
+    padding: 5%;
+  }
+  .profile {
+    @include font-style('proxima-nova-soft', normal, 700, 24px, 35px, #FFFFFF);
+  }
+  hr{
+    width:90%;
+    color: #373737;
+  }
+  .main-text{
+    @include font-style('proxima-nova-soft', normal, 700, 20px, 26px, #373737);
+  }
+  .sub-text{
+    @include font-style('proxima-nova-soft', normal, 700, 16x, 26px, #373737);
+  }
+  .content{
+    @include font-style('proxima-nova-soft', normal, 700, 18px, 26px, #373737);
+  }
+  
+  .settings-body-text{
+    text-align: justify;
+    padding: 5%;
+    text-align-last: left;
+  }

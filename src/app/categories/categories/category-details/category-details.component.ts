@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
+import data from 'src/assets/json/data.json'
 
 @Component({
   selector: 'app-category-details',
@@ -10,7 +11,7 @@ export class CategoryDetailsComponent implements OnInit {
 
   pathname:any
   pageNavigationName: any;
-
+  checkData:any=data
   constructor(private router:Router,private _Activatedroute:ActivatedRoute) { }
 
   ngOnInit(): void {

@@ -1,0 +1,34 @@
+<div class="chapters">
+    <p class="text-start course-content">Course Content</p>
+    <p class="text-start total-chapters" >{{couseContent.data.totalChapters}} chapter| 46 lessons | 6 Assignment Test | 3.5h
+        total length</p>
+    
+        <div  class="homeContent"*ngFor="let data of couseContent.data.chapters; index as i" [attr.data-index]="i">
+           
+           <div class="chapter-1">
+            <p> Chapter {{data.chapterNo}}- {{data.chapterName}} </p>
+           
+            <p> <button *ngIf="data.show===false" (click)="toggleButton(i,'plus')"> +</button>
+                <button  *ngIf="data.show===true" (click)="toggleButton(i,'minus')"> -</button>
+            </p>
+           </div>    
+            <div *ngIf="data.show===true && data.chapterNo ==num+1">
+                <div  *ngFor="let lesson of ChapterContent.serialNumber;  index as j" class="lesson">
+                 <!-- {{lesson.number}} -->
+                    <!-- <span ngIf="i>0"> Counter = {{ (i data[i-1].serialNumber.length ) + j+1 }} </span> -->
+                    <p class="lesson-number">{{lesson.number}}</p>
+                    <div class="video-info">
+                        <p >{{lesson.videoName}}</p>
+                        <p >{{lesson.duration}} &nbsp;mins</p>
+                    </div>
+                    <img src="assets\images\play.jpg" width="30px" height="30px" (click)="playVideo(lesson.videoLink)">
+               
+                    <!-- <button (click)="playVideo(lesson.videoLink)">play</button> -->
+                 
+                   
+                </div>
+            </div>
+        </div>
+    
+    </div> 
+

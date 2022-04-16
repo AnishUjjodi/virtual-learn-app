@@ -1,20 +1,24 @@
 <div class="header">
     <div class="logo-searchbar">
         <img src="assets\images\logo2.png">
-        <div class="input-searchbutton">
-            <input type="text" class="form-control" placeholder="Enter your phone number"(blur)="filterunToggle()" (focus)="filterToggle()" [(ngModel)]="searchInfo" (keyup.enter)="onSearchEnter()">
-            <button  class="search-button" (click)="onSearchEnter()">
-                <i class="fa fa-search" ></i>
-            </button>
+        <div class="divvv">
+            <div class="input-searchbutton">
+                <input type="text" [ngClass]="{inputfocus:this.toggle}" placeholder="Enter your phone number"(blur)="filterunToggle()" (focus)="filterToggle()" [(ngModel)]="searchInfo" (keyup.enter)="onSearchEnter()">
+                <button [ngClass]="{buttonfocus:this.toggle}" class="search-button" (click)="onSearchEnter()">
+                    <i class="fa fa-search" ></i>
+                </button>
+                
+            </div>
             <button class="filter-button" (click)="filterDialog()" [disabled]="filterDialogBox">
                 <img src="/assets/images/filter.png">
             </button>
         </div>
+        
        
        
         <div class="right-header-content" *ngIf="!toggle ;else buttonX">
-            <button><i class='far fa-bell'></i></button>
-            <button class="setting-icon"><img src="/assets/images/setting-icon.png"></button>
+            <button (click)="openDialog('notifications')"><i class='far fa-bell'></i></button>
+            <button class="setting-icon" (click)="openDialog('settings')"><img src="/assets/images/setting-icon.png"></button>
 
 
            <!-- <div class=""><a routerLink="/login"></a></div> -->
@@ -25,14 +29,14 @@
                 <img src="/assets/images/dhoni.png">
             </button>
             <div *ngIf="dropdownToggle" class="dropdown-menu" >
-              <a  href="#"><p>My Course</p></a>
+              <a  routerLink="/myCourse"><p>My Course</p></a>
               <a (click)="openDialog('profile')"><p>My Profile</p></a>
               <a  href="#"><p>Logout</p></a>
             </div>
           </div>
         </div> 
          <ng-template #buttonX>
-            <a style="min-width: 146px;"(click)="removeAllToggle()">X</a>
+            <a style="min-width: 146px;color: white;"(click)="removeAllToggle()"><img style="width: 15%;" src="/assets/images/close.png"></a>
         </ng-template>  
     </div>
     <div *ngIf="searchContentStatus===400" class="search-result">
@@ -45,7 +49,7 @@
             <img src={{user.courseImg}} alt="" >
             <div class="search-result-inner-content">
                 <p>{{user.courseName|titlecase}}</p>
-                <p style="font-size:14px;font-weight:100;color: #373737;margin-bottom: 8px;">{{user.totalChapters}} chapter</p> 
+                <p style="font-size:14px;font-weight:100;color: #FFFFFF;opacity:0.3;margin-bottom: 8px;">{{user.totalChapters}} chapter</p> 
                 <p class="p-category">{{user.category|titlecase}}</p>
             </div>
             <hr>

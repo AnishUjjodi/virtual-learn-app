@@ -30,13 +30,28 @@ export class DialogService {
   }
 
   openDialog(){
-   return this.dialog.open(ProfileSideNavigationComponent, 
+  //  return this.dialog.open(ProfileSideNavigationComponent, 
+    //   {
+    //     width:'33%',
+    //     maxWidth:'34%',
+    //     height:'100%',
+       
+       
+    //     panelClass:'custom-dialog-container',
+    //     disableClose:true,
+    //     position:{top:"0px",right:"0px"},
+    //     data:{
+    
+    //   profileData:this.profileData,
+    //   NavbarIcon:this.NavbarIcon
+    // }
+    // }
+    // )}
+    return this.dialog.open(ProfileSideNavigationComponent, 
       {
-        width:'33%',
-        maxWidth:'34%',
-        height:'100%',
-       
-       
+        width:'320px',
+        // maxWidth:'34%',
+        height:'100vh',
         panelClass:'custom-dialog-container',
         disableClose:true,
         position:{top:"0px",right:"0px"},
@@ -47,8 +62,6 @@ export class DialogService {
     }
     }
     )}
-
- 
 
 
 

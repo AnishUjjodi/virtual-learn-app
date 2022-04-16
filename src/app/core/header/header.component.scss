@@ -81,22 +81,32 @@
       width: 150px;
       object-fit: contain;
     }
-    .input-searchbutton {
+    .divvv
+    {
       display: flex;
-      width: 400px;
-      position: relative;
+      
+    }
+
+   
+    .input-searchbutton {
+      background-color: #123779;
+      width: 336px;
+      // position: relative;
+      border-radius: 57px;
   
       input {
-        width: 100%;
+        float: right;
+        width: 84%;
         height: 44px;
-        border-radius: 57px;
-        background-color: #123779;
-        padding-left: 45px;
+      
+       background-color: transparent;
+        padding-left: 4px;
         padding-top: 2px;
         border: none;
         color: white;
         font-size: 20px;
         outline: none;
+      
       }
       input::placeholder {
         color: white;
@@ -104,11 +114,24 @@
         font-size: 16px;
         outline: none;
       }
+      .inputfocus{
+        float: left;
+        padding: 0;
+        padding-left: 12px;
+        width: 80%;
+      }
+      
   
       .search-button {
-        position: absolute;
-        top: 24%;
-        left: 9px;
+        // position: absolute;
+        // top: 24%;
+        // left: 1%;
+        height: 100%;
+        padding: 0px;
+        padding-left: 16px;
+        padding-top: 6px;
+  border-radius: 57px;
+        float: left;
         background-color: transparent;
         border: none;
         outline: none;
@@ -119,13 +142,32 @@
           -webkit-text-stroke: 1px #123779;
         }
       }
-  
+      .buttonfocus{
+        background-color: #244F9C;
+        padding: 0;
+        width: 20%;
+      }
+      // input:focus{
+          // padding-left: 14px;
+          // border: none;
+          // float: left;
+      // }
+      // input:focus + .search-button{
+      //   float: right;
+
+      // }
+
+      // .search-button:focus{
+      //   float: right;
+      // }
+      
+  //////////////////
       // input:focus{
       //     padding-left: 14px;
       //     border: none;
       // }
   //    input:focus+ .search-button{
-  //        left:auto;
+  //     left: 68.2%;
   // right:0;
   // background-color: #244F9C;
   // border-radius: 57px;
@@ -133,7 +175,7 @@
   // width: 57px;
   // top: 0;
   
-    //  }
+  //    }
   
   //    .search-button:focus + input:not(:placeholder-shown){
   //      background-color: #FFFFFF;
@@ -142,8 +184,7 @@
   // }
   
   //    .search-button:focus{
-  //     left:auto;
-  // right:0;
+  
   // background-color: #244F9C;
   // border-radius: 57px;
   // height: 44px;
@@ -152,7 +193,7 @@
   
   // }
 
-     
+   /////////////  
       
     }
     .filter-button {

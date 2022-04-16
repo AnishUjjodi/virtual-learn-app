@@ -31,11 +31,11 @@ export class IntroComponent implements OnInit {
     }, this.duration * 1000);
   
   }
-  filterDialog(){
+  // filterDialog(){
  
     
-      this.dialogService.openConfirmDialog()
-  }
+  //     this.dialogService.openConfirmDialog()
+  // }
 
 
 }

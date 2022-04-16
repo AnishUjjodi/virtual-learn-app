@@ -69,6 +69,7 @@ export class LoginComponent implements OnInit {
 
 
   });
+  regError: any;
   
 
  
@@ -92,12 +93,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.service.triggerHeader('/login')
   
-    this.myForm = this.formBuilder.group({
-      // mob: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
-      mob: ['+91 ', [Validators.required, Validators.pattern("^[+][9][1][ ][6-9]{1}[0-9]{9}$")]]
-    })
+   
     
     this.service.jwtToken.subscribe((value) => {
       this.changepsswordToken = value;
@@ -161,6 +159,7 @@ export class LoginComponent implements OnInit {
 
         
           console.log(error)
+          this.regError=error.error.meta
           
 
       }
@@ -191,10 +190,16 @@ this.loginUserPasswordValidation=this.re.test(this.loginForm.get('loginpassword'
     }, { headers: headers }).subscribe({
       next: (res) => {
         console.log(res)
-        this.router.navigate(['home']);
+        this.router.navigate(['/login-success']);
       }, error: (error) => {
         console.log(error)
+
         this.errorMessageFromServer=error.error.meta.message
+        if(error.error.meta.code===404){
+          this.loginUserPasswordValidation=false
+          this.loginUserNameValidation=false
+        }
+        
         // alert(error.error.meta.message)
 
       }
@@ -228,11 +233,11 @@ this.loginUserPasswordValidation=this.re.test(this.loginForm.get('loginpassword'
       next: (res) => {
 
         console.log(res)
-        let c: any = JSON.stringify(res)
-        if (c.meta.message === "Account created") { 
-          console.log("success")
-        }
-        this.router.navigate(['/home'])
+        // let c: any = JSON.stringify(res)
+        // if (c.meta.message === "Account created") { 
+        //   console.log("success")
+        // }
+        this.router.navigate(['/login-success'])
 
 
       }, error: (error) => {
@@ -317,11 +322,17 @@ this.loginUserPasswordValidation=this.re.test(this.loginForm.get('loginpassword'
     
   // }
   move1(e: any) {
-    console.log(this.phnNum.length)
+    this.gotoLogin = false;
+    console.log(this.phnNum.toString())
+    // console.log(this.phnNum.length)
     let phnno=this.phnNum.toString()
     if(phnno.length==10){
       this.gotoLogin = false;
     }
+    this.myForm = this.formBuilder.group({
+      // mob: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
+      mob: ['+91 '+this.phnNum, [Validators.required, Validators.pattern("^[+][9][1][ ][6-9]{1}[0-9]{9}$")]]
+    })
   }
   onChangePassword() {
     console.log("gii")
@@ -343,10 +354,13 @@ this.loginUserPasswordValidation=this.re.test(this.loginForm.get('loginpassword'
       next: (res) => {
         console.log(res)
         this.passwordChangedTemplate=true
+        this.router.navigate(['/password-changed-successfully'])
         setTimeout(() => {
+         
+          this.router.navigate(['/login'])
           this.passwordChangedTemplate=false
         }, 5000);
-        this.router.navigate(['/login'])
+        
       }, error: (error) => {
         console.log(error)
         alert(error.error.meta.message)

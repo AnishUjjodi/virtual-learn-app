@@ -75,7 +75,7 @@
     
   //     }
 
-@mixin font-style($family, $style, $weight, $size, $line-height, $color) {
+  @mixin font-style($family, $style, $weight, $size, $line-height, $color) {
     font-family: $family;
     font-style: $style;
     font-weight: $weight;
@@ -86,7 +86,7 @@
   }
   
   .fluid-container {
-
+    position: relative;
     width: 100%;
     height: 100%;
    
@@ -98,7 +98,7 @@
       // opacity: 0.9;
       padding: 13px;
       
-      height: 210px;
+      height: 180px;
   
       .close {
         width: 23px;
@@ -133,8 +133,9 @@
       }
     
       .fullname-text {
-        @include font-style('proxima-nova-soft', normal, 700, 22px, 26px, #FFFFFF);
+        @include font-style('proxima-nova-soft', normal, 700, 18px, 26px, #FFFFFF);
         margin: 10px;
+        
   
       }
   
@@ -156,14 +157,14 @@
   
           box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
           border-radius: 6px;
-          margin: 10px;
+      
           padding: 17px;
-          width: 110px;
-          height: 100px;
+          width: 94px;
+          height: 72px;
           padding-top: 4%;
-  
+          
           .num {
-            @include font-style('proxima-nova-soft', normal, 700, 40px, 26px, #36B6F1);
+            @include font-style('proxima-nova-soft', normal, 700, 34px, 26px, #36B6F1);
             margin-bottom: 11%;
           }
         }
@@ -171,15 +172,21 @@
   
       .personal-details {
         @include font-style('proxima-nova-soft', normal, 700, 20px, 26px, #373737);
-        padding-top: 3%;
+        // padding-top: 3%;
+        margin-top: 3%;
+        tr, td{
+          padding: 0;
+        }
       }
   
       .field {
-        @include font-style('proxima-nova-soft', normal, 700, 20px, 26px, #7A7A7A);
+        @include font-style('proxima-nova-soft', normal, 700, 16px, 26px, #7A7A7A);
+        padding: 2px;
       }
   
       .value {
-        @include font-style('proxima-nova-soft', normal, 700, 20px, 26px, #373737);
+        @include font-style('proxima-nova-soft', normal, 700, 16px, 26px, #373737);
+        padding: 2px;
       }
   
       .privacy-box {
@@ -188,38 +195,36 @@
         align-items: center;
   
         .icon-box {
-          height: 60px;
-          width: 60px;
+          height: 44px;
+          width: 46px;
           background: #DFE7F5;
           border-radius: 6px;
           position: relative;
   
           .privacy {
-           position: absolute;
-          
-           
-            width: 70%;
-            height: 69%;
+            position: absolute;
+            width: 53%;
+            height: 57%;
             top: 8px;
-    left: 10px;
+            left: 10px
           }
 
           .white-tick{
-            width: 22px;
+            width: 15px;
             position: absolute;
-            top: 21px;
-    left: 20px;
+            top: 15px;
+            left: 15px;
           }
         }
   
         .privacy-text {
-          @include font-style('proxima-nova-soft', normal, 700, 20px, 26px, #072D5B);
-          margin-bottom: 5px;
+          @include font-style('proxima-nova-soft', normal, 700, 17px, 22px, #072D5B);
+          margin-bottom: 3px;
           margin-top: 4%;
         }
   
         .change-password {
-          @include font-style('proxima-nova-soft', normal, 700, 18px, 26px, #7A7A7A);
+          @include font-style('proxima-nova-soft', normal, 700, 16px, 22px, #7A7A7A);
         }
       }
     }
@@ -228,10 +233,15 @@
       background: #042C5C;
       opacity: 0.9;
       padding: 13px;
+      
   
       .edit-header-text {
-        @include font-style('proxima-nova-soft', normal, 700, 28px, 35px, #FFFFFF);
+        @include font-style('proxima-nova-soft', normal, 700, 20px, 22px, #FFFFFF);
         margin-top: 5%;
+      }
+      .back-icon{
+        margin-left: -257px;
+        object-fit: contain;
       }
     }
   
@@ -255,7 +265,7 @@
         width: 100%;
         transition: all .5s;
         padding: 0px;
-        @include font-style('Avenir', normal, 500, 20px, 27px, #072D5B);
+        @include font-style('Avenir', normal, 500, 17px, 25px, #072D5B);
   
       }
   
@@ -299,7 +309,10 @@
     height:20%;
     background-color: #042C5C;
     height: 130px;
-    padding: 5%
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 7px;
   }
   .settings-body{
     padding: 5%;
@@ -312,7 +325,7 @@
     color: #373737;
   }
   .main-text{
-    @include font-style('proxima-nova-soft', normal, 700, 20px, 26px, #373737);
+    @include font-style('proxima-nova-soft', normal, 700, 20px, 19px, #373737);
   }
   .sub-text{
     @include font-style('proxima-nova-soft', normal, 700, 16x, 26px, #373737);
@@ -326,3 +339,9 @@
     padding: 5%;
     text-align-last: left;
   }
+  .borderless td, .borderless th {
+    border: none;
+}
+.settings-body table tbody tr td{
+  border: none;
+}

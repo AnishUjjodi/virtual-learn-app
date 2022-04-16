@@ -161,5 +161,7 @@ categories(data:any){
   this.categorie=data
   console.log(this.categorie)
 }
+
+
 }
 

@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { VerifyComponent } from './verify/verify.component';
 import { CoreModule } from '../core/core.module';
 import { SuccessPasswordChangedComponent } from './success-password-changed/success-password-changed.component';
+import { LoginSuccessComponent } from './login-success/login-success.component';
 
 
 
@@ -16,14 +17,17 @@ import { SuccessPasswordChangedComponent } from './success-password-changed/succ
   declarations: [
     LoginComponent,
     VerifyComponent,
-    SuccessPasswordChangedComponent
+    SuccessPasswordChangedComponent,
+    LoginSuccessComponent
+    
   ],
   imports: [
     CommonModule,
     LoginRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CoreModule
     
   ],
   exports:[LoginComponent]

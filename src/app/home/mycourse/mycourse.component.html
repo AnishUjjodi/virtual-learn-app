@@ -1,0 +1,87 @@
+<!-- <p>my course works</p> -->
+
+
+<div class="fluid-cont" *ngIf="myCouseData==='NO DATA'" > 
+    <div class="heading">
+    <p class="mycourse">My Course</p>
+    <p class="x" >x</p>
+</div>
+    <div> 
+        <img src="assets\images\mycourse-empty.jpg" width="230" height="220" alt="">
+        
+        <p class="text1 text-center">What will you learn first?</p>
+        <p class="text2">Your courses will go here</p>
+    </div>
+ 
+    <p class="text3 text-start">Categories</p>
+    <div class="categories">
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;Design</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;Development</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span> &nbsp;Business</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;Music</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;Finance</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;Health& Fitness</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;IT & Software</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;Marketing</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;Lifestyle</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;Photography</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;IT & Software</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;Marketing</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;Lifestyle</span></button>
+        <button><img src="assets\images\dev.png" alt=""><span>&nbsp;Photography</span></button>
+    </div>
+    
+</div>
+
+    <div class="fluid-conta"  *ngIf="myCouseData==='DATA'">
+        <p class="mycourse">My Course</p>
+       <div class="btns">
+        <button (click)="switch('ongoing')" [ngClass]="(ongoingCourse=='ongoing')?'class1':'class2'">Ongoing</button>
+        <button (click)="switch('completed')" [ngClass]="(ongoingCourse=='completed')?'class1':'class2'">Completed</button>
+       </div><br>
+        <div *ngIf="ongoingCourse=='ongoing' ;else onGoingORCompleted" class="courses">
+       <div *ngFor="let data of myCourseContent.data.onGoingCourses; index as i">
+        
+        
+
+         <div class="img" [routerLink]="['/courseDetails', data.courseId,data.courseName]" >
+            <div class="box-shadow"></div>
+            <img src="{{data.courseImg}}"  alt="" >
+           
+            <p class="ongoing">Ongoing</p>
+            <p class="courseName">{{data.courseName}}</p>
+            <p class="chapters">10/20 Chapters</p>
+            <button class="btn-continue">Continue</button>
+          
+         </div>
+         
+        </div> 
+         <!-- <div class="img">
+            <div class="box-shadow"></div>
+         <img src="https://fossbytes.com/wp-content/uploads/2015/11/learn-github-free.jpg" alt="" >
+          </div> -->
+      </div>
+      <ng-template #onGoingORCompleted >
+          <!-- <div  class="homeContent" *ngFor="let data of myCourseContent.data.onGoingCourses; index as i">
+              <img src="{{data.courseImg}}"  alt="" width="400px" height="261px">
+             </div> -->
+             <div class="courses">
+             <div class="img">
+                <div class="box-shadow"></div>
+                <img src="{{myCourseContent.data.onGoingCourses[1].courseImg}}"  alt="" >
+                <p class="ongoing">Completed</p>
+                <p class="courseName">{{myCourseContent.data.onGoingCourses[0].courseName}}</p>
+                <p class="chapters">100% Approval Rate</p>
+                <button class="btn-continue">View certificate</button>
+             </div>
+             <div class="img">
+                <div class="box-shadow"></div>
+             <img src="{{myCourseContent.data.onGoingCourses[0].courseImg}}"  alt="" >
+             <p class="ongoing">Completed</p>
+             <p class="courseName">{{myCourseContent.data.onGoingCourses[0].courseName}}</p>
+             <p class="chapters">80% Approval Rate</p>
+             <button class="btn-continue">View certificate</button>
+             </div>
+            </div>
+      </ng-template>
+    </div>

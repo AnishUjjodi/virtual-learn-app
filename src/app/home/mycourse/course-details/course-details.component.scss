@@ -1,0 +1,393 @@
+// @mixin font-style($family, $style, $weight, $size, $line-height, $color) {
+//     font-family: $family;
+//     font-style: $style;
+//     font-weight: $weight;
+//     font-size: $size;
+//     line-height: $line-height;
+//     / identical to box height, or 125% /
+//     color: $color;
+//   }
+  
+// .main-container{
+//     // display:flex;
+//     // background-color: black;
+   
+//     // width:100vw;
+//     // margin-right: 2%;
+//     display: grid;
+//     grid-template-columns: 58% 30%;
+//     gap:2%;
+//     margin:0% 12%;
+//     height: 100vh;
+// }
+
+// .video{
+  
+//   .Mycourse{
+//     @include font-style('Biko', normal, 400, 16px, 30px, #2BB5F4);
+//   }
+// //   Proxima Nova Soft
+//   .Ongoing{
+//     @include font-style('Biko', normal, 400, 16px, 30px, #7A7A7A);
+//   }
+//     .imag{
+//         position: relative;
+//         img{
+//             // object-fit: contain;
+//         //   width:400px;
+//         //   max-width: 100%;
+//             // height: 385px;
+//             width: 100%;
+//             height: 300px;
+//             object-fit: cover;
+//             background: rgba(0, 0, 0, 0.45);
+//             border-radius: 12px;
+//             // object-position: bottom;
+//         }
+//         .shadow{
+//             background: rgba(0, 0, 0, 0.30);
+//             position: absolute;
+//             left:0px;
+//             width:100%;
+//             height:100%;
+//             top:0px;
+//         }
+//     }
+//     .titles{
+//         // padding-top: 10%;
+//         // display: grid;
+//         // grid-template-columns: 85% 15%;
+//         // grid-row: 2;
+//         display: flex;
+//         flex-wrap: wrap;
+//         align-items: center;
+//         justify-content: space-between;
+//         border: 1px solid #F0F0F0;
+//         padding:3%;
+//         margin-bottom: 4%;
+//         button{
+//           background: #FCBE4B;
+// mix-blend-mode: normal;
+// border-radius: 6px;
+//         }
+//         .info{
+//           p:first-child{
+//             margin-bottom: 0.2rem;
+//             @include font-style('Biko', normal, 400, 18px, 30px, #111111);
+//           }
+//           p:last-child{
+//             margin-bottom: 0.5rem;
+//             @include font-style('Biko', normal, 400, 16px, 24px, #111111);
+//           }
+//         }
+       
+       
+//     }
+//     .overviewTitle{
+//       text-align: justify;
+//       @include font-style('Proxima Nova Soft', normal, 400, 18px, 26px, #2BB5F4);
+//     } 
+//     .description{
+//       text-align: justify;
+//       @include font-style('Proxima Nova Soft', normal, 400, 18px, 26px, #000000);
+//     }
+// }
+// .overview-chapters{
+//     background: #FFFFFF;
+//     border: 1px solid #F0F0F0;
+//     box-sizing: border-box;
+//     border-radius: 6px;
+//     padding: 5%;
+  
+// }
+// ul {
+ 
+//   margin: 0;
+//   list-style:none;
+//   padding-bottom: 10%;
+// }
+
+// ul li {
+//   float: left;
+// }
+
+// a:link {
+//   text-decoration: none !important;
+// }
+
+// li a {
+ 
+//   font-size: 14px;
+//   position: relative;
+//   letter-spacing: 2px;
+//   text-transform: uppercase;
+//   -webkit-transition: all 0.4s ease;
+//   transition: all 0.4s ease;
+//   margin: 10px;
+//   padding-bottom: 10px;
+// }
+
+// a:after {
+//   content: "";
+//   position: absolute;
+//   height: 2px;
+//   background-color: red;
+//   width: 0;
+//   left: 50%;
+//   bottom: 0;
+//   -webkit-transform: translateX(-50%);
+//   -ms-transform: translateX(-50%);
+//   transform: translateX(-50%);
+//   -webkit-transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+//   transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+  
+// color: red;
+// }
+
+
+
+// /*a:hover:after {
+//   width: 100%;
+// }*/
+// // a:active {
+// //   background-color: #000000;
+// //   color: red;
+// // }
+// a.active:after {
+//   width: 100%;
+// }
+// a:focus {
+//   color: red;
+// }
+// .is-active{
+//   color:red
+// }
+
+@mixin font-style($family, $style, $weight, $size, $line-height, $color) {
+    font-family: $family;
+    font-style: $style;
+    font-weight: $weight;
+    font-size: $size;
+    line-height: $line-height;
+   
+    color: $color;
+  }
+  .section{
+    margin:0% 12%;
+    .Mycourse{
+      @include font-style('Biko', normal, 400, 14px, 25px, #2BB5F4);
+    
+    }
+    //   Proxima Nova Soft
+    .Ongoing{
+      @include font-style('Biko', normal, 400, 14px, 25px, #7A7A7A);
+      
+    }
+  }
+  
+  .main-container{
+    // display:flex;
+    // background-color: black;
+   
+    // width:100vw;
+    // margin-right: 2%;
+    display: grid;
+    grid-template-columns: 60% 35%;
+    gap:2%;
+    margin:0% 12%;
+    height: 100vh;
+    
+  }
+  
+  .video{
+  
+  
+    .imag{
+        position: relative;
+        img{
+            // object-fit: contain;
+        //   width:400px;
+        //   max-width: 100%;
+            // height: 385px;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background: rgba(0, 0, 0, 0.45);
+            border-radius: 12px;
+            
+            // object-position: bottom;
+        }
+        .preview{
+          position: absolute;
+          top:6%;
+          @include font-style('proxima-nova-soft', normal, 700, 24px, 20px, #FFFFFF);
+          left: 5%;
+        }
+        .intoduction{
+          color:white;
+          width: 100%;
+          bottom: 6%;
+          position: absolute;
+          // padding-left: 7%;
+          background: linear-gradient(90deg, rgba(0, 0, 0, 0.83) 17.46%, rgba(0, 0, 0, 0) 90.6%);
+          padding:2% 0 2% 5%;
+          p:first-child{
+            text-align: start;
+            @include font-style('proxima-nova-soft', normal, 700, 24px, 20px, #FFFFFF);
+            margin-bottom: 0.2rem;
+            // left: 10%;
+          }
+          p:last-child{
+            text-align: start;
+            @include font-style('proxima-nova-soft', normal, 500, 18px, 20px, #FFFFFF);
+            margin-bottom: 0.2rem;
+            // left: 10%;
+          }
+        }
+        .shadow{
+            background: rgba(0, 0, 0, 0.30);
+            position: absolute;
+            left:0px;
+            width:100%;
+            height:100%;
+            top:0px;
+        }
+    }
+    .titles{
+        // padding-top: 10%;
+        // display: grid;
+        // grid-template-columns: 85% 15%;
+        // grid-row: 2;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid #F0F0F0;
+        padding:3%;
+        margin-bottom: 4%;
+        button{
+          background: #FCBE4B;
+  mix-blend-mode: normal;
+  border-radius: 6px;
+  border:none;
+  outline: none;
+        }
+        .info{
+          p:first-child{
+            margin-bottom: 0.2rem;
+            @include font-style('Biko', normal, 400, 16px, 25px, #111111);
+          }
+          p:last-child{
+            margin-bottom: 0.5rem;
+            @include font-style('Biko', normal, 400, 14px, 19px, #111111);
+          }
+        }
+       
+       
+    }
+    .overviewTitle{
+      text-align: justify;
+      @include font-style('proxima-nova-soft', normal, 400, 16px, 21px, #2BB5F4);
+    } 
+    .description{
+      text-align: justify;
+      @include font-style('proxima-nova-soft', normal, 400, 16px, 21px, #000000);
+    }
+  }
+  .overview-chapters{
+    background: #FFFFFF;
+    border: 1px solid #F0F0F0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 5%;
+  
+  }
+  a{
+    @include font-style('proxima-nova-soft', normal, 400, 16px, 20px, #7A7A7A);
+  }
+  ul {
+  
+  margin: 0;
+  list-style:none;
+  // padding-bottom: 10%;
+  padding:0px;
+  }
+  
+  ul li {
+  float: left;
+  }
+  
+  a:link {
+  text-decoration: none !important;
+  
+  }
+  
+  li a {
+  
+  font-size: 14px;
+  position: relative;
+  letter-spacing: 1px;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  margin: 10px;
+  padding-bottom: 10px;
+  // @include font-style('Proxima Nova Soft', normal, 400, 18px, 45px, #7A7A7A);
+  }
+  
+  a:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background-color: red;
+  width: 0;
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+  transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+  
+  }
+  ul {
+    position: relative;
+    padding-bottom: 30px;
+    }
+  ul:after{
+      content: "";
+      position: absolute;
+      height: 1px;
+      background-color: #F0F0F0;
+      width: 80%;
+      left: 42%;
+      bottom: 3px;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      -webkit-transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+      transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+      
+      
+  }
+  
+  
+  
+  /*a:hover:after {
+  width: 100%;
+  }*/
+  // a:active {
+  //   background-color: #000000;
+  //   color: red;
+  // }
+  a.active:after {
+  width: 100%;
+  }
+  // a:focus {
+  // color: red;
+  // }
+  // .is-active{
+  // color:red
+  // }
+  .active-class{
+    color:red;
+  }

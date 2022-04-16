@@ -1,8 +1,8 @@
 <!-- <button (click)="closeDialog()"></button> -->
-<!-- <app-header></app-header> -->
-<app-login-success *ngIf="successLoginTemplateTime!==10"></app-login-success>
-
-<div class="home-body" *ngIf="successLoginTemplateTime===10">
+<app-header></app-header>
+<!-- <app-login-success *ngIf="successLoginTemplateTime!==10"></app-login-success> -->
+<!-- [ngClass]="{checkk:successLoginTemplateTime!==10}" -->
+<div class="home-body" >
     <p>Hello!</p>
     <h3>Mahendra Singh dhoni</h3>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -15,20 +15,24 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
               <div class="div">
-                  <div class="dibb">
+                
+                  <div class="dibb"[routerLink]="['/courseDetails', homeContent.allCourses[0]._id,homeContent.allCourses[0].courseName]" >
+                    <div class="image-bottom-shade"></div>
                     <img  src={{homeContent.allCourses[0].courseImg}} alt="First slide">
                     <p>{{homeContent.allCourses[0].courseName}}</p>
-                   <div class="image-bottom-shade"></div>
+                  
                   </div>
                   <div class="dibb">
+                    <div class="image-bottom-shade"></div>
                     <img  src={{homeContent.allCourses[1].courseImg}} alt="First slide">
                     <p>{{homeContent.allCourses[1].courseName}}</p>
-                    <div class="image-bottom-shade"></div>
+                   
                   </div>
                   <div class="dibb">
+                    <div class="image-bottom-shade"></div>
                     <img  src={{homeContent.allCourses[2].courseImg}} alt="First slide">
                     <p>{{homeContent.allCourses[2].courseName}}</p>
-                    <div class="image-bottom-shade"></div>
+                    
                   </div>
               </div>
               
@@ -36,19 +40,22 @@
           <div class="carousel-item">
             <div class="div">
                 <div class="dibb">
+                  <div class="image-bottom-shade"></div>
                     <img  src={{homeContent.allCourses[3].courseImg}} alt="Second slide">
                     <p>{{homeContent.allCourses[3].courseName}}</p>
-                    <div class="image-bottom-shade"></div>
+                    
                   </div>
                   <div class="dibb">
+                    <div class="image-bottom-shade"></div>
                     <img  src="https://cdn-images-1.medium.com/max/2000/1*SSutxOFoBUaUmgeNWAPeBA.jpeg" alt="Second slide">
                     <p>{{homeContent.allCourses[4].courseName}}</p>
-                    <div class="image-bottom-shade"></div>
+                  
                   </div>
                   <div class="dibb">
-                    <img src="https://a0.anyrgb.com/pngimg/1952/1778/c-programming-language-c-programming-language-generalpurpose-programming-language-compiler-programming-language-source-code-programmer-programming-computer-programming-c-thumbnail.png" alt="Second slide">
-                    <p>C Language course</p>
                     <div class="image-bottom-shade"></div>
+                    <img src="https://www.androidauthority.com/wp-content/uploads/2016/09/react-native-logo.jpg">
+                    <p>React Native</p>
+                   
                   </div>
 
             </div>
@@ -57,19 +64,22 @@
           <div class="carousel-item">
             <div class="div">
                 <div class="dibb">
+                  <div class="image-bottom-shade"></div>
                     <img  src="https://cdn-images-1.medium.com/max/2000/1*SSutxOFoBUaUmgeNWAPeBA.jpeg" alt="Third slide">
                     <p>Python course</p>
-                    <div class="image-bottom-shade"></div>
+                    
                   </div>
                   <div class="dibb">
+                    <div class="image-bottom-shade"></div>
                     <img  src="https://1001tricks.com/wp-content/uploads/2011/05/css3-scaled.jpg" alt="Third slide">
                     <p>CSS course</p>
-                    <div class="image-bottom-shade"></div>
+                    
                   </div>
                   <div class="dibb">
+                    <div class="image-bottom-shade"></div>
                     <img  src="https://pantheon.io/sites/default/files/field/image/TypeScriptImage.jpeg" alt="Third slide">
                     <p>Typescript course</p>
-                    <div class="image-bottom-shade"></div>
+                   
                   </div>
            
             </div>
@@ -78,14 +88,17 @@
           <div class="carousel-item">
             <div class="div">
                 <div class="dibb">
+                  <div class="image-bottom-shade"></div>
                     <img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
                     <p>JAVA course</p>
                   </div>
                   <div class="dibb">
+                    <div class="image-bottom-shade"></div>
                     <img  src="https://1001tricks.com/wp-content/uploads/2011/05/css3-scaled.jpg" alt="Third slide">
                     <p>CSS course</p>
                   </div>
                   <div class="dibb">
+                    <div class="image-bottom-shade"></div>
                     <img  src="https://pantheon.io/sites/default/files/field/image/TypeScriptImage.jpeg" alt="Third slide">
                     <p>Typescript course</p>
                   </div>
@@ -113,14 +126,16 @@
 Ongoing course
 </div>
 <div class="rightDiv">
-See all
+  <a routerLink="/myCourse">See All</a>
+
 </div>
 <div style="clear: both;"></div>
 </div>
      
      <div class="ongoing-course" >
         <div class="dibb" *ngFor="let data of homeContent.ongoingCourses.slice(0,3);let i=index " >
-            <img  src={{data.courseImg}}>
+          <div class="image-bottom-shade"></div>
+            <img  src={{data.courseImg}} alt="Not Found"  onerror="this.onerror=null; this.src='https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg'">
             <div class="ongoing-inner">
               <p>{{data.courseName}}</p>
               <!-- <div class="ongoing-inner-block">
@@ -129,7 +144,7 @@ See all
               </div> -->
                 <!-- <p>{{data.category}}</p> -->
             </div>
-            <div class="image-bottom-shade"></div>
+            
             
           </div>
           
@@ -146,17 +161,17 @@ See all
             <div style="clear: both;"></div>
         </div>
        
-        <button (click)="categories('Design')"><img src="/assets/images/10.png">Design</button>
-        <button (click)="categories('Development')"><img src="/assets/images/3.png">Development</button>
-        <button (click)="categories('Business')"><img src="/assets/images/4.png">Business</button>
-        <button (click)="categories('Finance')"><img src="/assets/images/1.png">Finance</button>
-        <button (click)="categories('Health & Fitness')"><img src="/assets/images/0.png">Health & Fitness</button>
-        <button (click)="categories('Music')"><img src="/assets/images/2.png">Music</button>
-        <button (click)="categories('IT & Software')"><img src="/assets/images/7.png">IT & Software</button>
-        <button (click)="categories('Markeeting')"><img src="/assets/images/6.png">Markeeting</button>
-        <button (click)="categories('Lifestyle')"><img src="/assets/images/5.png">Lifestyle</button>
-        <button (click)="categories('Photography')"><img src="/assets/images/9.png">Photography</button>
-        <button (click)="categories('Teaching')"><img src="/assets/images/8.png">Teaching</button>
+        <button (click)="categories('Design')"><a [routerLink]="['/category-detail', 'Design']"><img src="/assets/images/10.png" >Design</a></button>
+        <button (click)="categories('Development')"><img src="/assets/images/3.png"[routerLink]="['/category-detail', 'Development']">Development</button>
+        <button (click)="categories('Business')"><img src="/assets/images/4.png"[routerLink]="['/category-detail', 'Business']">Business</button>
+        <button (click)="categories('Finance')"><img src="/assets/images/1.png"[routerLink]="['/category-detail', 'Finance']">Finance</button>
+        <button (click)="categories('Health & Fitness')"><img src="/assets/images/0.png"[routerLink]="['/category-detail', 'Health & Fitness']">Health & Fitness</button>
+        <button (click)="categories('Music')"><img src="/assets/images/2.png"[routerLink]="['/category-detail', 'Music']">Music</button>
+        <button (click)="categories('IT & Software')"><img src="/assets/images/7.png"[routerLink]="['/category-detail', 'IT & Software']">IT & Software</button>
+        <button (click)="categories('Markeeting')"><img src="/assets/images/6.png"[routerLink]="['/category-detail', 'Marketing']">Marketing</button>
+        <button (click)="categories('Lifestyle')"><img src="/assets/images/5.png"[routerLink]="['/category-detail', 'Lifestyle']">Lifestyle</button>
+        <button (click)="categories('Photography')"><img src="/assets/images/9.png"[routerLink]="['/category-detail', 'Photography']">Photography</button>
+        <button (click)="categories('Teaching')"><img src="/assets/images/8.png"[routerLink]="['/category-detail', 'Teaching']">Teaching</button>
         
     </div>
       
@@ -171,36 +186,44 @@ See all
     </div>
 <div class="choice-container">
 
-<button>All</button>
-<button>popular</button>
-<button>Newest</button>
+<button (click)="routeButtonClick('all')"[ngStyle]="{backgroundColor:getbackCss('all')}">All</button>
+<button (click)="routeButtonClick('popular')" [ngStyle]="{backgroundColor:getbackCss('popular')}">popular</button>
+<button (click)="routeButtonClick('newest')" [ngStyle]="{backgroundColor:getbackCss('newest')}">Newest</button>
 
 </div>
 <div class="choice-subcontainer">
 <div class="choice-element">
-<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<img *ngIf="routeButton==='all'" src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<img  *ngIf="routeButton==='popular'"src={{checkData[6].imageurl}}>
+<img *ngIf="routeButton==='newest'" src={{checkData[0].imageurl}}>
 <button>Design</button>
 <p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
 <p id="choice-chapter">7 Chapter</p>
 
 </div>
 <div class="choice-element">
-<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+  <img *ngIf="routeButton==='all'" src={{checkData[1].imageurl}}>
+  <img  *ngIf="routeButton==='popular'"src={{checkData[3].imageurl}}>
+  <img *ngIf="routeButton==='newest'" src={{checkData[1].imageurl}}>
 <button>Design</button>
 <p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
 <p id="choice-chapter">7 Chapter</p>
 
 </div>
 <div class="choice-element">
-<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
-<button>Design</button>
+  <img *ngIf="routeButton==='all'" src={{checkData[4].imageurl}}>
+  <img  *ngIf="routeButton==='popular'"src={{checkData[0].imageurl}}>
+  <img *ngIf="routeButton==='newest'" src={{checkData[2].imageurl}}>
+  <button>Design</button>
 <p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
 <p id="choice-chapter">7 Chapter</p>
 
 </div>
 <div class="choice-element">
-<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
-<button>Design</button>
+  <img *ngIf="routeButton==='all'" src={{checkData[0].imageurl}}>
+  <img  *ngIf="routeButton==='popular'"src={{checkData[5].imageurl}}>
+  <img *ngIf="routeButton==='newest'" src={{checkData[3].imageurl}}>
+  <button>Design</button>
 <p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
 <p id="choice-chapter">7 Chapter</p>
 
@@ -222,28 +245,28 @@ See all
 
 <div class="choice-subcontainer">
 <div class="choice-element">
-<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<img  src={{checkData[6].imageurl}}>
 <button>Design</button>
 <p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
 <p id="choice-chapter">7 Chapter</p>
 
 </div>
 <div class="choice-element">
-<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<img  src={{checkData[5].imageurl}}>
 <button>Design</button>
 <p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
 <p id="choice-chapter">7 Chapter</p>
 
 </div>
 <div class="choice-element">
-<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<img  src={{checkData[4].imageurl}}>
 <button>Design</button>
 <p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
 <p id="choice-chapter">7 Chapter</p>
 
 </div>
 <div class="choice-element">
-<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<img  src={{checkData[3].imageurl}}>
 <button>Design</button>
 <p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
 <p id="choice-chapter">7 Chapter</p>
@@ -263,21 +286,21 @@ See all
 </div>
 <div class="choice-subcontainer">
 <div class="choice-element">
-<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<img  src={{checkData[2].imageurl}}>
 <button>Design</button>
 <p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
 <p id="choice-chapter">7 Chapter</p>
 
 </div>
 <div class="choice-element">
-<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<img  src={{checkData[1].imageurl}}>
 <button>Design</button>
 <p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
 <p id="choice-chapter">7 Chapter</p>
 
 </div>
 <div class="choice-element">
-<img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
+<img  src={{checkData[0].imageurl}}>
 <button>Design</button>
 <p id="choice-title">Learn Figma- UI/UX Design Essential training</p>
 <p id="choice-chapter">7 Chapter</p>

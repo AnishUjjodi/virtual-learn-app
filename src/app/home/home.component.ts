@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { CommonService } from '../services/common.service';
 import { DialogService } from '../services/dialog.service';
+import data from 'src/assets/json/data.json'
 
 
 
@@ -13,6 +14,7 @@ import { DialogService } from '../services/dialog.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  checkData:any=data
   allCourses: any = []
   categorie: any = ""
   filterDialogBox: boolean = false
@@ -20,13 +22,18 @@ export class HomeComponent implements OnInit {
   headers = new HttpHeaders({ 'Authorization': "jwt " + localStorage.getItem('login jwtToken') })
   profileData: any = [];
   successLoginTemplateTime=0
+  routeButton: any='all';
+ 
   constructor(private service: CommonService, private http: HttpClient, private dialogService: DialogService,private router:Router) { }
 
   ngOnInit(): void {
+
     setTimeout(() => {
       this.successLoginTemplateTime=10
-      
+      this.service.triggerHeader('/home')
+    
     }, 10000);
+    
     localStorage.setItem('login jwtToken', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDJhNjAzOWYyMWEwNTRmYWY1NjFiNyIsImlhdCI6MTY0ODY1Mzg5MX0.-9uP4FO7TiO0En35r8DlYVh3IDhtNTigSDZlFfk7nE8")
     let profileDataUrl = "https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/myProfile"
 
@@ -56,7 +63,11 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  routeButtonClick(data:any){
+    this.routeButton=data
+    console.log(this.routeButton)
 
+  }
   
   categories(data: any) {
     this.categorie = data
@@ -80,6 +91,8 @@ export class HomeComponent implements OnInit {
   closeDialog() {
     this.dialogService.openConfirmDialog()
   }
-
+  getbackCss(data:any){
+    return this.routeButton===data?'#DFE7F4':'white';
+  }
 
 }

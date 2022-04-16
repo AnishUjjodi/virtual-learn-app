@@ -8,6 +8,9 @@
 //       width: 89.2%;
       
 //      }
+.checkk{
+    display: none;
+}
   
      .image-bottom-shade {
       position: absolute;
@@ -226,7 +229,7 @@
            
             margin: 0;
             margin-top: 15px;
-            color: #7A7A7A;
+            color: white;
         }
 
         h3{
@@ -253,10 +256,21 @@
             float: right;
             font-size: 14px;
             color: #7A7A7A;
+            a{
+                color: #7A7A7A;
+                text-decoration: none;
+            }
         }
-     
+        .carousel-control-prev {
+            /* left: 0; */
+            display: none;
+        }
+        .carousel-control-next {
+         display: none;
+        } 
         
 .carousel-inner{
+    
     
     .carousel-item {
 
@@ -330,7 +344,7 @@ height:166px;
         width: 100%;
         height: 100%;
         // border: 1px solid black;
-        object-fit: cover;
+        object-fit: unset;
         
        
         
@@ -364,6 +378,10 @@ height:166px;
         border-radius: 4px;
         font-size: 13px;
 font-weight: 700;
+a{
+    text-decoration: none;
+    color: black;
+}
     }
     button:hover{
         background-color: rgba(252, 190, 75, 1);
@@ -371,6 +389,9 @@ font-weight: 700;
     img{
         object-fit: cover;
         width: 22px;
+        a{
+            text-decoration: none;
+        }
     }
     
 }

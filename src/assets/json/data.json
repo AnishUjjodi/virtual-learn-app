@@ -1,0 +1,63 @@
+[
+      {
+        "description":"Flutter",
+        "imageurl":"https://cdn.swapps.com/uploads/2018/07/trying-out-flutter.jpg"
+      },
+      {
+        "description":"React Native",
+        "imageurl":"https://www.androidauthority.com/wp-content/uploads/2016/09/react-native-logo.jpg"
+      },
+      {
+        "description":"Android Development",
+        "imageurl":"https://s3-ap-southeast-1.amazonaws.com/blog.internshala.com/wp-content/uploads/2018/06/how-to-learn-android-app-development.jpg"
+      },
+      {
+        "description":"IOS Development",
+        "imageurl":"http://peopleofcolorintech.com/wp-content/uploads/2016/02/iOS-Developer.jpg"
+      },
+      {
+        "description":"Linux",
+        "imageurl":"https://www.technocrazed.com/wp-content/uploads/2015/12/Linux-Wallpaper-15.jpg"
+      },
+      {
+        "description":"Windows",
+        "imageurl":"https://i.ytimg.com/vi/97cuBbprHXQ/maxresdefault.jpg"
+      },
+      {
+        "description":"Marketing",
+        "imageurl":"https://www.assk.in/blog/wp-content/uploads/2017/09/AAEAAQAAAAAAAAkQAAAAJDBkMzllMGM5LWMwN2ItNDliYy04ODg5LTQzMDhmMGYyMzg1Zg.jpg"
+      },
+      {
+        "description":"Machine Learning",
+        "imageurl":"https://devopsartisan.com/wp-content/uploads/2020/07/Machine-learning_DevOps-Artisan.jpg"
+      },
+      {
+        "description":"Cyber Security",
+        "imageurl":"https://www.leapit.co.uk/wp-content/uploads/2019/11/Cyber-Security-Importance-1080x675.jpeg"
+      },
+      {
+        "description":"Kotlin Programming",
+        "imageurl":"https://www.softprodigy.com/wp-content/uploads/2020/09/Kotlin-programming-language-Preferred-for-Android-app-development.jpg"
+      },
+      {
+        "description":"Svelte Course",
+        "imageurl":"https://i.ytimg.com/vi/OCuRyiKruqA/maxresdefault.jpg"
+      },
+      {
+        "description":"Vue Framework",
+        "imageurl":"https://jelvix.com/wp-content/uploads/2019/08/Vue-framework-2.jpg"
+      },
+      {
+        "description":"Ember Framework",
+        "imageurl":"https://jelvix.com/wp-content/uploads/2018/08/Ember.js_.jpg"
+      },
+      {
+        "description":"JQuery Course",
+        "imageurl":"https://www.usethistip.com/wp-content/uploads/2013/08/jquery.png"
+      }
+      
+      
+     
+      
+    ]
+  

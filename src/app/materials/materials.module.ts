@@ -88,7 +88,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       MatPaginatorModule,
       MatSortModule,
       MatTableModule,
-      UiSwitchModule,
+      UiSwitchModule.forRoot({
+        size: 'small',
+        color: 'rgb(0, 189, 99)',
+        switchColor: '#ffffff',
+      
+        defaultBoColor : '#ffffff',
+      
+      }),
       FormsModule,
       ReactiveFormsModule
     ],

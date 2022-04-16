@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 
@@ -9,8 +10,12 @@ export class CommonService {
   verifyUrl=new BehaviorSubject(null)
   NavbarIcon =new Subject();
   homeContentData:any
-
-  constructor() { }
+  headerChange=new Subject()
+  VideoUrl=new Subject();
+  course_id: any;
+  course_name: any;
+  
+  constructor(private http:HttpClient) { }
   getToken(token:any){
     this.jwtToken.next(token);
   }
@@ -21,5 +26,23 @@ export class CommonService {
 
   findNotificationSettingsProfile(NavbarIcon:any){
     this.NavbarIcon.next(NavbarIcon)
+      }
+
+      triggerHeader(data:any){
+this.headerChange.next(data)
+      }
+      viewCourse(){
+
+        let viewCourseUrl=new URL("https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/viewCourse?courseName=course_name&courseId=62273c244603abcaf3ffeeb1")
+        viewCourseUrl.searchParams.set('courseName', this.course_name);
+        viewCourseUrl.searchParams.set('courseId', this.course_id);
+    
+        let headers = new HttpHeaders({ 'Authorization': "jwt "+localStorage.getItem('login jwtToken')})
+       return  this.http.get(viewCourseUrl.href, { headers: headers })
+        
+          }
+      setIdAndName(course_id:any, course_name:any){
+        this.course_id=course_id;
+        this.course_name=course_name;
       }
 }

@@ -1,0 +1,54 @@
+
+  
+  <p class=" section text-start"><span class="Mycourse">My Course&nbsp;>&nbsp;</span><span class="Ongoing">Ongoing</span>
+  </p>
+  <div class="main-container">
+    <div class="video">
+  
+      <div class="imag" *ngIf="Isvideo === false; ">
+        <div class="shadow"></div>
+        <img src="{{couseContent.data.courseImg}}" alt="">
+  
+        <p class="preview">Preview the course</p>
+        <div class="intoduction">
+          <p>Introduction</p>
+          <p>{{couseContent.data.chapters[0].serialNumber[0].duration}} mins </p>
+        </div>
+      </div>
+  
+      <iframe #iframe class="imag" width="100%" height="300" src="">
+      </iframe>
+  
+  
+  
+      <div class="titles">
+        <div class="info">
+          <p>Learn {{couseContent.data.category}} - {{couseContent.data.courseName}}</p>
+          <p class="text-start">{{couseContent.data.totalChapters}} | 46 Lessons</p>
+        </div>
+  
+        <button> {{couseContent.data.category}} </button>
+      </div>
+  
+      <p class="overviewTitle">{{couseContent.data.overviewTitle}}</p>
+      <p class="description">{{couseContent.data.description}}</p>
+  
+    </div>
+    <div class="overview-chapters">
+  
+      <div>
+        <ul>
+          <li class="text-start"><a routerLink="course-overview" routerLinkActive=" active-class active"
+              [routerLinkActiveOptions]="{ exact: true}">Overview</a></li>
+          <li><a routerLink="course-chapters" routerLinkActive=" active-class active">Chapters</a></li>
+  
+        </ul>
+  
+      </div>
+  
+      <router-outlet></router-outlet>
+  
+    </div>
+  
+  </div>
+

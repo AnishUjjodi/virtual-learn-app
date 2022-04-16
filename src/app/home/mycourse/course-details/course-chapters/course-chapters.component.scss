@@ -1,0 +1,73 @@
+@mixin font-style($family, $style, $weight, $size, $line-height, $color) {
+    font-family: $family;
+    font-style: $style;
+    font-weight: $weight;
+    font-size: $size;
+    line-height: $line-height;
+ 
+    color: $color;
+}
+
+.chapters {
+    padding: 4%;
+
+    .course-content {
+        @include font-style('proxima-nova-soft', normal, 600, 18px, 25px, #111111);
+    }
+
+    .total-chapters {
+        @include font-style('proxima-nova-soft', normal, 500, 14px, 15px, #111111);
+    }
+
+    .chapter-1 {
+        display: flex;
+        justify-content: space-between;
+        // .chapter-name{
+        //     @include font-style('Proxima Nova Soft', normal, 600, 16px, 25px, #111111);
+
+        //     span{
+        //        color: #EC5D52;
+        //        width:4%;
+        //     }
+        // }
+        p:first-child {
+            @include font-style('proxima-nova-soft', normal, 600, 16px, 25px, #111111);
+        }
+
+        p:last-child button {
+            background-color: white;
+            outline: none;
+            border: none;
+            cursor: pointer;
+
+            @include font-style('proxima-nova-soft', normal, 600, 16px, 25px, red);
+
+        }
+    }
+}
+
+.lesson {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F9F9F9;
+    border-radius: 6px;
+    margin-bottom: 6px;
+
+    .video-info{
+        p:first-child {
+            @include font-style('proxima-nova-soft', normal, 500, 18px, 20px, #373737);
+        }
+        p:last-child {
+            @include font-style('proxima-nova-soft', normal, 600, 14px, 30px, #7A7A7A);
+        }
+    }
+   
+    p {
+        margin-bottom: 0.2rem;
+    }
+
+    .lesson-number {
+        @include font-style('proxima-nova-soft', normal, 700, 28px, 25px, #373737);
+    }
+}

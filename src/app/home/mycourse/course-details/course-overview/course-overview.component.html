@@ -4,37 +4,37 @@
     <table class="table table-borderless">
         <tbody>
             <tr>
-                <td class="text-start "> <img src="assets\images\duration.jpg" width="17px" height="17px"></td>
+                <td class="text-start "> <img src="assets\images\duration.jpg" ></td>
                 <td class="text-start main-text">{{couseContent.data.courseIncludes[0]}}</td>
 
             </tr>
 
             <tr>
-                <td class="text-start "> <img src="assets\images\support.jpg" width="17px" height="17px"></td>
+                <td class="text-start "> <img src="assets\images\support.jpg" ></td>
                 <td class="text-start main-text">{{couseContent.data.courseIncludes[1]}}</td>
 
             </tr>
             <tr>
 
-                <td class="text-start "> <img src="assets\images\test.jpg" width="17px" height="17px"></td>
+                <td class="text-start "> <img src="assets\images\test.jpg" ></td>
                 <td class="text-start main-text">{{couseContent.data.courseIncludes[2]}}</td>
 
             </tr>
             <tr>
 
-                <td class="text-start "> <img src="assets\images\access.jpg" width="17px" height="17px"></td>
+                <td class="text-start "> <img src="assets\images\access.jpg" ></td>
                 <td class="text-start main-text">{{couseContent.data.courseIncludes[3]}}</td>
 
             </tr>
             <tr>
 
-                <td class="text-start "> <img src="assets\images\access1.jpg" width="17px" height="17px"></td>
+                <td class="text-start "> <img src="assets\images\access1.jpg" ></td>
                 <td class="text-start main-text">{{couseContent.data.courseIncludes[4]}}</td>
 
             </tr>
             <tr>
 
-                <td class="text-start "> <img src="assets\images\certificate.jpg" width="17px" height="17px"></td>
+                <td class="text-start "> <img src="assets\images\certificate.jpg" ></td>
                 <td class="text-start main-text">{{couseContent.data.courseIncludes[5]}}</td>
 
             </tr>
@@ -42,30 +42,33 @@
             <!--  (click)="EditORchangePassword('changePassword')" -->
 
     </table>
+    <br>
     <h5 class="course-includes">What you'll learn</h5>
     <div class="homeContent" *ngFor="let data of couseContent.data.learn; index as i">
         <tr>
-            <td class="text-start "> <img src="assets\images\points.jpg" width="15px" height="15px"></td>
-            <td class="text-start main-text">{{data}}</td>
+            <td class="text-started "> <img src="assets\images\points.jpg" style="width: 22px;height: 22px;margin-right: 8px;"></td>
+            <td class="text-started main-text">{{data}}</td>
 
         </tr>
        
     </div>
+    <br>
     <h5 class="course-includes">Requirements</h5>
     <div class="homeContent" *ngFor="let data of couseContent.data.requirements; index as i">
         <!-- &#8226;  <span class="normal-text">{{data}}</span> -->
         <tr>
-            <td class="text-start " style="color: black;">&#8226;</td>
-            <td class="text-start main-text">{{data}}</td>
+            <td class="dot" style="color: black;font-size: 26px;position: relative;top: 4px;">&#8226;</td>&nbsp;
+            <td class="text-started main-text">{{data}}</td>
 
         </tr>
     </div>
+    <br>
     <p class="course-includes">Instructor</p>
     <div class="instructor">
         <img src="{{couseContent.data.instructor[0].profile}}" width="90px" height="90px"alt="">
         <div class="instructor-info">
-            <p class="normal-text">{{couseContent.data.instructor[0].name}}</p>
-            <p class="normal-text" style="font-size: 12px;">{{couseContent.data.instructor[0].occupation}}</p>
+            <p class="normal-text" style="font-weight: 700;">{{couseContent.data.instructor[0].name}}</p>
+            <p class="normal-text" style="font-size: 12px;line-height: 16px;">{{couseContent.data.instructor[0].occupation}}</p>
         </div>
      
     </div>

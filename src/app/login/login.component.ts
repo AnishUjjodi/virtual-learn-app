@@ -70,6 +70,7 @@ export class LoginComponent implements OnInit {
 
   });
   regError: any;
+  loginToken: any;
   
 
  
@@ -78,7 +79,7 @@ export class LoginComponent implements OnInit {
     //   mob: ['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
     // })
     this.changepasswordForm = formBuilder.group({
-      password: ['', [Validators.required, Validators.pattern(/^(?=\D*\d)(?=[^a-z][a-z])(?=[^A-Z][A-Z]).{6,}$/)], Validators.minLength(10)],
+      password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{4,16}$/)]],
       confirmPassword: ['', Validators.required]
     }
       ,
@@ -88,12 +89,12 @@ export class LoginComponent implements OnInit {
 
     this.loginForm = formBuilder.group({
       loginusername: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(10)]],
-      loginpassword: ['', [Validators.required, Validators.pattern(/^(?=\D*\d)(?=[^a-z][a-z])(?=[^A-Z][A-Z]).{6,}$/)], Validators.minLength(10)]
+      loginpassword: ['', [Validators.required, Validators.pattern(/^(?=\D*\d)(?=[^a-z][a-z])(?=[^A-Z][A-Z]).{6,}$/)], Validators.minLength(5)]
     })
   }
 
   ngOnInit(): void {
-    this.service.triggerHeader('/login')
+    // this.service.triggerHeader('/login')
   
    
     
@@ -188,8 +189,10 @@ this.loginUserPasswordValidation=this.re.test(this.loginForm.get('loginpassword'
       "userName": this.loginForm.get('loginusername')!.value,
       "password": this.loginForm.get('loginpassword')!.value
     }, { headers: headers }).subscribe({
-      next: (res) => {
+      next: (res:any) => {
         console.log(res)
+        this.loginToken=res.meta.token
+        localStorage.setItem('login jwtToken',this.loginToken )
         this.router.navigate(['/login-success']);
       }, error: (error) => {
         console.log(error)
@@ -230,15 +233,16 @@ this.loginUserPasswordValidation=this.re.test(this.loginForm.get('loginpassword'
       "password": this.contactForm.get('password')!.value,
       "confirmPassword": this.contactForm.get('confirmPassword')!.value
     }, { headers: headers }).subscribe({
-      next: (res) => {
+      next: (res:any) => {
 
         console.log(res)
         // let c: any = JSON.stringify(res)
         // if (c.meta.message === "Account created") { 
         //   console.log("success")
         // }
-        this.router.navigate(['/login-success'])
-
+        // this.router.navigate(['/login-success'])//if we r doing auto login after register please use this
+        localStorage.setItem('reg jwtToken',res.meta.token )
+this.router.navigate(['/login'])
 
       }, error: (error) => {
 

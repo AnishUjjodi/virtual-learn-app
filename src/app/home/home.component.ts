@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
   profileData: any = [];
   successLoginTemplateTime=0
   routeButton: any='all';
+  fullName:any=''
+  profileDataUrl ="https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/myProfile"
  
   constructor(private service: CommonService, private http: HttpClient, private dialogService: DialogService,private router:Router) { }
 
@@ -30,11 +32,11 @@ export class HomeComponent implements OnInit {
 
     setTimeout(() => {
       this.successLoginTemplateTime=10
-      this.service.triggerHeader('/home')
+      // this.service.triggerHeader('/home')
     
     }, 10000);
     
-    localStorage.setItem('login jwtToken', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDJhNjAzOWYyMWEwNTRmYWY1NjFiNyIsImlhdCI6MTY0ODY1Mzg5MX0.-9uP4FO7TiO0En35r8DlYVh3IDhtNTigSDZlFfk7nE8")
+    // localStorage.setItem('login jwtToken', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDJhNjAzOWYyMWEwNTRmYWY1NjFiNyIsImlhdCI6MTY0ODY1Mzg5MX0.-9uP4FO7TiO0En35r8DlYVh3IDhtNTigSDZlFfk7nE8")
     let profileDataUrl = "https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/myProfile"
 
     this.http.get(profileDataUrl, { headers: this.headers }).subscribe({
@@ -61,7 +63,20 @@ export class HomeComponent implements OnInit {
         console.log(error)
       }
     })
+    
+    
+    this.http.get(this.profileDataUrl, { headers: headers }).subscribe({
+      next: (res:any={}) => {
+       
+       
+        this.fullName=res.data.fullName;
+    this.service.fullname.subscribe((data)=>{
+       this.fullName=data
+    })
   }
+})
+}
+
 
   routeButtonClick(data:any){
     this.routeButton=data

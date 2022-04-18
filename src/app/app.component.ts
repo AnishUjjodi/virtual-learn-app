@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { CommonService } from './services/common.service';
+import {  NavigationEnd, NavigationStart, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -12,18 +12,21 @@ export class AppComponent implements OnInit {
 
   routerPath:any='/login'
 
-  constructor(private router: Router,private service:CommonService) { 
+  constructor(private router: Router) { 
         // router.events.subscribe((url:any) => console.log(url));
         // to print only path eg:"/login"
   }
   ngOnInit(){
     
-    this.service.headerChange.subscribe((data:any)=>{
-      setTimeout(() => {
-        console.log(this.router.url)
-        this.routerPath=this.router.url
-      }, 100);
-    })
+    this.router.events.subscribe((event: any) => {
+      if(event instanceof NavigationStart) {
+        console.log('start => ',event.url);
+        this.routerPath=event.url
+      }
+      if(event instanceof NavigationEnd) {
+        console.log('end => ',event.url);
+      }
+    });
     
  
   }

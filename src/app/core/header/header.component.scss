@@ -93,25 +93,26 @@
       width: 336px;
       // position: relative;
       border-radius: 57px;
+      height: 38px;
   
       input {
         float: right;
         width: 84%;
-        height: 44px;
+        height: 100%;
       
        background-color: transparent;
         padding-left: 4px;
         padding-top: 2px;
         border: none;
         color: white;
-        font-size: 20px;
+        font-size: 16px;
         outline: none;
       
       }
       input::placeholder {
         color: white;
         opacity: 0.7;
-        font-size: 16px;
+        font-size: 14px;
         outline: none;
       }
       .inputfocus{
@@ -249,6 +250,34 @@
           height: 32px;
           border-radius: 50%;
         }
+
+        .dropdown-menu{
+          padding: 6px 10px;
+          a{
+            .content-dropdown{
+              display: flex;
+              width: 100%;
+              margin-top: 5px;
+            }
+          }
+          p{
+            font-size: 15px;
+            margin: 0;
+            margin-bottom: 6px;
+            margin-top: 2px;
+            
+          }
+          img{
+            width: 22px;
+            height: 22px;
+            margin-right: 6px;
+          }
+          hr{
+            color: #042C5C;
+            opacity: 10%;
+            margin: 0;
+          }
+        }
       }
     }
   }
@@ -304,6 +333,9 @@
       button:hover {
         background-color: rgba(252, 190, 75, 1);
       }
+      button:focus{
+        background-color: rgba(252, 190, 75, 1);
+      }
     }
   }
   
@@ -315,6 +347,8 @@
     a {
       text-decoration: none;
       color: black;
+
+     
     }
   }
   

@@ -1,5 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { CommonService } from 'src/app/services/common.service';
 import { DialogService } from 'src/app/services/dialog.service';
 
 
@@ -11,11 +12,11 @@ import { DialogService } from 'src/app/services/dialog.service';
 })
 export class MatConfFilterComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<MatConfFilterComponent>,private dialog:DialogService,private ngZone: NgZone) { }
+  constructor(private dialogRef: MatDialogRef<MatConfFilterComponent>,private dialog:DialogService,private ngZone: NgZone,private commonService:CommonService) { }
 
   toggle:Boolean=false
   categories:any=""
-  durations:any=""
+  durations:any
   buttonNumber:any=0
   durationButton:any=0
 
@@ -47,6 +48,7 @@ this.categories=categorie
 this.durations=duration
     this.toggle=!this.toggle
     console.log(this.categories,this.durations)
+    
 
   }
 
@@ -58,7 +60,7 @@ this.durations=''
 console.log(this.categories,this.durations)
   }
   applyFilter(){
-    
+    this.commonService.matdialogApplyFilterData(this.categories,this.durations)
   }
 
  

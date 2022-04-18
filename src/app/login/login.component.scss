@@ -89,6 +89,7 @@ $common-button-min-width: 64%;;
   padding-bottom: 5%;
   width: 100%;
   height: 100%;
+  width: 1088px !important;
 }
 
 .row {
@@ -277,16 +278,17 @@ h2 {
   .usernamevalidationsuccess{
    
     background: url("/assets/images/successtick.png") no-repeat 95% 50%;
-    background-position-y: 2px;
-    background-size: 24px;
-    border-bottom: 2px solid lime;
+    background-position-y: 8px;
+    background-size: 18px;
+  
+    border-bottom: 1px solid lime;
   }
   .usernamevalidationfail{
     
     background: url("/assets/images/invalidtext.png") no-repeat 95% 50%;
-    background-position-y: 2px;
-    background-size: 24px;
-    border-bottom: 2px solid red;
+    background-position-y: 8px;
+    background-size: 18px;
+    border-bottom: 1px solid red;
   }
 
   // input:required:valid {
@@ -515,7 +517,7 @@ input:-internal-autofill-selected {
 }
 
 .container {
-  width: 1320px !important;
+  width: 1088px !important;
 }
 
 .register-txt {

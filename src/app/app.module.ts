@@ -16,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CoreModule } from './core/core.module';
 import { MaterialsModule } from './materials/materials.module';
+import { HomeRoutingModule } from './home/home-routing.module';
+import { LoginRoutingModule } from './login/login-routing.module';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 

@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { AbstractControl, FormBuilder, } from '@angular/forms'
 import ConfirmedValidator from 'src/app/login/confirmedValidator';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CommonService } from 'src/app/services/common.service';
 
 
 @Component({
@@ -31,6 +32,7 @@ course:any;
   gender: any;
   privacyOrTOS:any;
   checked = true;
+  fileData:any
 
 
   profileForm: FormGroup = new FormGroup({
@@ -50,7 +52,7 @@ course:any;
   formControlNameError: any;
   isFormSubmitted: boolean=false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data:any, private MatDialogRef:MatDialogRef<ProfileSideNavigationComponent>, public formBuilder: FormBuilder, private http:HttpClient) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data:any, private MatDialogRef:MatDialogRef<ProfileSideNavigationComponent>, public formBuilder: FormBuilder, private http:HttpClient,private commonService:CommonService) {
   
    console.log(data)
   this.NavbarIcon=data.NavbarIcon;
@@ -148,6 +150,36 @@ course:any;
       }
     })
   }
+  checkImgae(event:any){
+    this.fileData=<File>event.target.files[0]
+    const fd=new FormData();
+    fd.append('image',this.fileData,this.fileData.name)
+    let url="https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/myProfile/edit/profileImage"
+    let headers = new HttpHeaders({ 'Authorization': "jwt "+localStorage.getItem('login jwtToken')})
+    this.http.patch<any>(url, fd, { headers: headers }).subscribe({
+      next: (res:any={}) => {
+      console.log("hi this is put request", res);
+      this.getprofileInfo()
+    }, error: (error:any) => {
+      console.log(error)
+    }
+    })
+  }
+  // checkkk(){
+  //   console.log(this.fileData)
+  //   const fd=new FormData();
+  //   fd.append('image',this.fileData,this.fileData.name)
+  //   let url="https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/myProfile/edit/profileImage"
+  //   let headers = new HttpHeaders({ 'Authorization': "jwt "+localStorage.getItem('login jwtToken')})
+  //   this.http.patch<any>(url, fd, { headers: headers }).subscribe({
+  //     next: (res:any={}) => {
+  //     console.log("hi this is put request", res);
+  //     this.getprofileInfo()
+  //   }, error: (error:any) => {
+  //     console.log(error)
+  //   }
+  //   })
+  // }
  getprofileInfo(){
   let profileDataUrl ="https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/myProfile"
   let headers = new HttpHeaders({ 'Authorization': "jwt "+localStorage.getItem('login jwtToken')})
@@ -156,6 +188,8 @@ course:any;
      
      
       this.fullname=res.data.fullName;
+      this.commonService.fullnameSend(this.fullname)
+      // this.commonService.fullname=this.fullname
       this.Username= res.data.userName;
       this.EmailID=res.data.email;
       this.MobileNumber=res.data.phone;

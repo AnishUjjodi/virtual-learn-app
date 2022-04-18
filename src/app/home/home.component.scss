@@ -11,7 +11,15 @@
 .checkk{
     display: none;
 }
-  
+.image-top-shade {
+    position: absolute;
+top: 0;
+height: 66px;
+background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.39) 100%);
+width: 100%;
+      border-top-left-radius: 6px;
+      border-top-right-radius:6px ;
+}
      .image-bottom-shade {
       position: absolute;
       bottom: 0;
@@ -225,16 +233,17 @@
      
         width: 80%;
         text-align: start;
-        p{
+        h4{
            
             margin: 0;
             margin-top: 15px;
-            color: white;
+            color: rgba(122, 122, 122, 1);
         }
 
         h3{
             font-weight: 700;
             color: #092963;
+            font-size: 20px;
         }
         .heading{
           
@@ -279,7 +288,7 @@
         justify-content: space-between;
         position: relative;
         width: 100%;
-        height:166px;
+        height:192px;
         }
 
         .dibb{
@@ -287,8 +296,9 @@
             position: relative;
             p{
                 position: absolute;
-                bottom: 10px;
+                bottom: 0px;
                 left: 10px;
+                color: white;
             }
         }
       
@@ -315,21 +325,52 @@ justify-content: start;
 column-gap:2%;
 position: relative;
 width: 100%;
-height:166px;
+height: 192px;
 }
 
 .dibb{
     width: 32%;
     position: relative;
     
+    // .ongoing-inner{
+    //     position: absolute;
+    //     display: flex;
+    //     justify-content: space-between;
+    //     bottom: 10px;
+    //     left: 10px;
+    //     p{
+    //         color: white;
+    //     }
+    //   .ongoing-inner-block{
+    //       display: block;
+    //       p{
+    //         color: white;
+    //     }
+    //   }  
+        
+    // }
     .ongoing-inner{
-        position: absolute;
-        display: flex;
-        justify-content: space-between;
-        bottom: 10px;
-        left: 10px;
+        padding: 12px;
+    position: absolute;
+    display: flex;
+    bottom: -4px;
+    left: 0px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
         p{
             color: white;
+            margin-top: 0.2rem;
+            margin: 0;
+            margin-bottom: 4px;
+        }
+        button{
+            background: #EC5D52;
+            border-radius: 4px;
+            color: white;
+            height: fit-content;
+            padding: 4px 12px;
+            border: none;
         }
       .ongoing-inner-block{
           display: block;
@@ -344,7 +385,7 @@ height:166px;
         width: 100%;
         height: 100%;
         // border: 1px solid black;
-        object-fit: unset;
+        object-fit: cover;
         
        
         
@@ -483,6 +524,7 @@ a{
           color:black;
           font-size: 16px;
           padding-left: 10px;
+          margin-top: 10px;
       }
 
       #choice-chapter{

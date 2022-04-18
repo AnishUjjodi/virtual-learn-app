@@ -34,19 +34,23 @@
 </div>
 
     <div class="fluid-conta"  *ngIf="myCouseData==='DATA'">
+        <br>
         <p class="mycourse">My Course</p>
+        <br>
        <div class="btns">
         <button (click)="switch('ongoing')" [ngClass]="(ongoingCourse=='ongoing')?'class1':'class2'">Ongoing</button>
         <button (click)="switch('completed')" [ngClass]="(ongoingCourse=='completed')?'class1':'class2'">Completed</button>
-       </div><br>
+       </div><br><br>
         <div *ngIf="ongoingCourse=='ongoing' ;else onGoingORCompleted" class="courses">
        <div *ngFor="let data of myCourseContent.data.onGoingCourses; index as i">
         
         
 
-         <div class="img" [routerLink]="['/courseDetails', data.courseId,data.courseName]" >
-            <div class="box-shadow"></div>
-            <img src="{{data.courseImg}}"  alt="" >
+         <div class="img" [routerLink]="['/courseDetails', data.courseId,data.courseName]"style="cursor: pointer;" >
+            <div class="image-top-shade"></div>
+            <div class="image-bottom-shade"></div>
+            <!-- <div class="box-shadow"></div> -->
+            <img src="{{data.courseImg}}"  alt="Not Found" style="object-fit: cover;object-position: center;" onerror="this.onerror=null; this.src='https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg'">
            
             <p class="ongoing">Ongoing</p>
             <p class="courseName">{{data.courseName}}</p>
@@ -66,16 +70,20 @@
               <img src="{{data.courseImg}}"  alt="" width="400px" height="261px">
              </div> -->
              <div class="courses">
-             <div class="img">
-                <div class="box-shadow"></div>
+             <div class="img"style="cursor: pointer;">
+                <!-- <div class="box-shadow"></div> -->
+                <div class="image-top-shade"></div>
+                <div class="image-bottom-shade"></div>
                 <img src="{{myCourseContent.data.onGoingCourses[1].courseImg}}"  alt="" >
                 <p class="ongoing">Completed</p>
                 <p class="courseName">{{myCourseContent.data.onGoingCourses[0].courseName}}</p>
                 <p class="chapters">100% Approval Rate</p>
                 <button class="btn-continue">View certificate</button>
              </div>
-             <div class="img">
-                <div class="box-shadow"></div>
+             <div class="img" style="cursor: pointer;">
+                <!-- <div class="box-shadow"></div> -->
+                <div class="image-top-shade"></div>
+                <div class="image-bottom-shade"></div>
              <img src="{{myCourseContent.data.onGoingCourses[0].courseImg}}"  alt="" >
              <p class="ongoing">Completed</p>
              <p class="courseName">{{myCourseContent.data.onGoingCourses[0].courseName}}</p>

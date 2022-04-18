@@ -48,7 +48,8 @@ console.log(this.couseContent.data.totalChapters)
   
     // this.ChapterContent=this.couseContent.data.chapters[chapterNo]
     // console.log(this.showChapterContent)
-    for(let i=0;i<this.couseContent.data.totalChapters;i++){
+    // for(let i=0;i<this.couseContent.data.totalChapters;i++){
+      for(let i=0;i<this.couseContent.data.chapters.length;i++){
       if(i==chapterNo){
         this.couseContent.data.chapters[chapterNo].show=!this.couseContent.data.chapters[chapterNo].show
       }

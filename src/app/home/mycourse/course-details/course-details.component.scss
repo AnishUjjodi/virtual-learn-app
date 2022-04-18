@@ -175,12 +175,12 @@
   .section{
     margin:0% 12%;
     .Mycourse{
-      @include font-style('Biko', normal, 400, 14px, 25px, #2BB5F4);
+      @include font-style('biko-regular', normal, 400, 16px, 25px, #2BB5F4);
     
     }
     //   Proxima Nova Soft
     .Ongoing{
-      @include font-style('Biko', normal, 400, 14px, 25px, #7A7A7A);
+      @include font-style('biko-regular', normal, 400, 16px, 25px, #7A7A7A);
       
     }
   }
@@ -200,8 +200,9 @@
   }
   
   .video{
-  
-  
+    // border-bottom-left-radius: 12px;
+    // border-bottom-right-radius: 12px;
+    border-radius: 10px;
     .imag{
         position: relative;
         img{
@@ -213,7 +214,10 @@
             height: 300px;
             object-fit: cover;
             background: rgba(0, 0, 0, 0.45);
-            border-radius: 12px;
+            // border-top-left-radius: 12px;
+            // border-top-right-radius: 12px;
+            border-radius: 10px;
+            // border-radius: 12px;
             
             // object-position: bottom;
         }
@@ -251,6 +255,10 @@
             width:100%;
             height:100%;
             top:0px;
+            border-radius: 0;
+            border-radius: 10px;
+            // border-top-left-radius: 12px;
+            // border-top-right-radius: 12px;
         }
     }
     .titles{
@@ -258,28 +266,35 @@
         // display: grid;
         // grid-template-columns: 85% 15%;
         // grid-row: 2;
+        // border-bottom-left-radius: 12px;
+        // border-bottom-right-radius: 12px;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        border: 1px solid #F0F0F0;
+        // border: 1px solid #F0F0F0;
+        border: none;
         padding:3%;
         margin-bottom: 4%;
+        border-bottom: 1px solid #F0F0F0;
         button{
           background: #FCBE4B;
   mix-blend-mode: normal;
-  border-radius: 6px;
+  border-radius: 4px;
   border:none;
+  padding: 4px 12px;
+  margin-top: -24px;
+
   outline: none;
         }
         .info{
           p:first-child{
             margin-bottom: 0.2rem;
-            @include font-style('Biko', normal, 400, 16px, 25px, #111111);
+            @include font-style('biko-regular', normal, 700, 16px, 25px, #111111);
           }
           p:last-child{
             margin-bottom: 0.5rem;
-            @include font-style('Biko', normal, 400, 14px, 19px, #111111);
+            @include font-style('biko-regular', normal, 400, 14px, 19px, rgba(17, 17, 17, 1));
           }
         }
        
@@ -287,11 +302,11 @@
     }
     .overviewTitle{
       text-align: justify;
-      @include font-style('proxima-nova-soft', normal, 400, 16px, 21px, #2BB5F4);
+      @include font-style('proxima-nova-soft', normal, 400, 15px, 21px, #2BB5F4);
     } 
     .description{
       text-align: justify;
-      @include font-style('proxima-nova-soft', normal, 400, 16px, 21px, #000000);
+      @include font-style('proxima-nova-soft', normal, 400, 15px, 21px, #000000);
     }
   }
   .overview-chapters{
@@ -303,7 +318,7 @@
   
   }
   a{
-    @include font-style('proxima-nova-soft', normal, 400, 16px, 20px, #7A7A7A);
+    @include font-style('proxima-nova-soft', normal, 700, 16px, 20px, #7A7A7A);
   }
   ul {
   
@@ -337,11 +352,12 @@
   a:after {
   content: "";
   position: absolute;
-  height: 2px;
+  height: 1px;
   background-color: red;
+  
   width: 0;
   left: 50%;
-  bottom: 0;
+  bottom: 3px;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);

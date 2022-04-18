@@ -3,13 +3,15 @@
         <img src="assets\images\logo2.png">
         <div class="divvv">
             <div class="input-searchbutton">
-                <input type="text" [ngClass]="{inputfocus:this.toggle}" placeholder="Enter your phone number"(blur)="filterunToggle()" (focus)="filterToggle()" [(ngModel)]="searchInfo" (keyup.enter)="onSearchEnter()">
+                <!-- (blur)="filterunToggle()"  -->
+                <input type="text" [ngClass]="{inputfocus:this.toggle}" placeholder="Enter your phone number"(focus)="filterToggle()" [(ngModel)]="searchInfo" (keyup.enter)="onSearchEnter()">
                 <button [ngClass]="{buttonfocus:this.toggle}" class="search-button" (click)="onSearchEnter()">
                     <i class="fa fa-search" ></i>
                 </button>
                 
             </div>
-            <button class="filter-button" (click)="filterDialog()" [disabled]="filterDialogBox">
+            <!-- [disabled]="filterDialogBox" -->
+            <button class="filter-button" (click)="filterDialog()" >
                 <img src="/assets/images/filter.png">
             </button>
         </div>
@@ -25,13 +27,31 @@
 
 
            <div class="dropdown profil-details">
-            <button  type="button" (click)="dropdownToggled()">
+            <button  type="button" (click)="dropdownToggled()"(blur)="removeDropDown()">
                 <img src="/assets/images/dhoni.png">
             </button>
             <div *ngIf="dropdownToggle" class="dropdown-menu" >
-              <a  routerLink="/myCourse"><p>My Course</p></a>
-              <a (click)="openDialog('profile')"><p>My Profile</p></a>
-              <a  href="#"><p>Logout</p></a>
+              <a  routerLink="/myCourse">
+                  <div class="content-dropdown">
+                    <img src="/assets/images/mycourse.png">
+                    <p>My Course</p>
+                 </div>
+                </a> 
+                <hr>
+              <a (click)="openDialog('profile')">
+                <div class="content-dropdown">
+                    <img src="/assets/images/myprofile.png">
+                    <p>My Profile</p>
+                 </div>
+                </a> 
+              
+              <hr>
+              <a (click)="eraseToken()" routerLink="/login"> 
+                  <div class="content-dropdown">
+                <img src="/assets/images/logout.png">
+                <p>Logout</p>
+             </div>
+            </a> 
             </div>
           </div>
         </div> 
@@ -46,7 +66,7 @@
      <!-- <ng-template #e> -->
        <div class="search-result-main" *ngIf="searchContentStatus===200&&searchButtonStatus===true;">
         <div  class="search-result-content" *ngFor="let user of searchContent.data; index as i">
-            <img src={{user.courseImg}} alt="" >
+            <img src={{user.courseImg}}  alt="Not Found"  onerror="this.onerror=null; this.src='https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg'" >
             <div class="search-result-inner-content">
                 <p>{{user.courseName|titlecase}}</p>
                 <p style="font-size:14px;font-weight:100;color: #FFFFFF;opacity:0.3;margin-bottom: 8px;">{{user.totalChapters}} chapter</p> 

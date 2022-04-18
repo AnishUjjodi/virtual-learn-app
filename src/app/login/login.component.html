@@ -125,7 +125,7 @@
                     Password</label>
 
                 </div>
-                <button type="submit" style="margin-top: 8%;padding-left: 23%;padding-right: 23%;"
+                <button type="submit"[disabled]="!changepasswordForm.valid" style="margin-top: 8%;padding-left: 23%;padding-right: 23%;"
                   class="btn-login">Reset Password</button>
               </form>
             </div>
@@ -144,7 +144,7 @@
 
                   <input type="text" class="form-control" [ngClass]="{usernamevalidationsuccess:loginUserNameValidation,usernamevalidationfail:loginUserNameValidation===false}" placeholder="Username" formControlName="loginusername" >
                   <label for="Username" class="form-label" style="transform: translateY(-3.2em);">Username</label>
-                  <input type="text" class="form-control" [ngClass]="{usernamevalidationsuccess:loginUserPasswordValidation,usernamevalidationfail:loginUserPasswordValidation===false}" placeholder="Enter your password"
+                  <input type="password" class="form-control" [ngClass]="{usernamevalidationsuccess:loginUserPasswordValidation,usernamevalidationfail:loginUserPasswordValidation===false}" placeholder="Enter your password"
                     formControlName="loginpassword" >
                   <label for="Username" class="form-label" style="transform: translateY(-3.2em);">Password</label>
                 </div>

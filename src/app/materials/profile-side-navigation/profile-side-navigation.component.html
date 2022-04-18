@@ -6,13 +6,21 @@
       <div class="personal-details" [ngSwitch]="editOrChangepassword">
         <div *ngSwitchCase="'edit'">
           <div class="CommonHeader">
-            <img class="text-start back-icon" src="assets\images\back.png" alt="" width="20" height="20"
+            <img class="text-start back-icon" src="assets\images\white-back.png" style="cursor: pointer;" alt="" width="20" height="20"
               (click)="EditORchangePassword(' ')" />
             <p class="text-start edit-header-text">Edit Profile</p>
-            <img src="{{ profileImgSrc }}" width="80px" height="80px" alt="" />
+            <div class="editimageprofile">
+              <img class="profileimage"src="{{ profileImgSrc }}"  alt="" />
+              <label for="file"> <img  src="assets\images\editimage.png" style="cursor: pointer;" alt="" width="28" height="28"></label>
+              <input type="file" id="file" (change)="checkImgae($event)" style="display:none;visibility:none">
+              <!-- <button (click)="checkkk()">check</button> -->
+            </div>
+           
+            
+        
           </div>
           <div class="CommonBody" style="padding-top: 10%">
-            <form class="profileForm" [formGroup]="profileForm" (ngSubmit)="onSubmitProfileForm()" novalidate>
+            <form class="profileForm" [formGroup]="profileForm" (ngSubmit)="onSubmitProfileForm();EditORchangePassword(' ')" novalidate>
               <div class="input-grp">
                 <input type="text" id="fullname" name="fullname" class="form-control register-number"
                   placeholder="Full Name" formControlName="fullname" />
@@ -109,7 +117,7 @@
                   ">Facebook Link
                 </label>
               </div>
-              <button type="submit" class="btn-login" style="margin: 0">
+              <button type="submit"  class="btn-login" style="margin: 0">
                 Save
               </button>
             </form>
@@ -117,11 +125,11 @@
         </div>
         <div *ngSwitchCase="'changePassword'">
           <div class="CommonHeader">
-            <img class="text-start" src="/assets/images/back.png" alt="" width="15" height="15"
+            <img class="text-start" src="/assets/images/white-back.png" alt="" width="15" height="15"
               style="margin-left: -272px; background-color: transparent; object-fit: contain;" (click)="EditORchangePassword(' ')" />
             <p class="text-start edit-header-text">Change your Password</p>
 
-            <p class="text-start edit-header-text" style="font-size: 15px">
+            <p class="text-start edit-header-text" style="font-size: 15px;max-width:250px;">
               Your password must have at least 6 or more characters
             </p>
           </div>
@@ -205,24 +213,24 @@
           <div
             *ngIf="(f[formControlNameError].touched||isFormSubmitted)&&(f[formControlNameError].errors?.['required'])||(f[formControlNameError].errors?.['minlength'])||(f[formControlNameError].errors?.['pattern'])||(f[formControlNameError].errors?.['matching'])">
             <div class="alert-danger" *ngIf="(f[formControlNameError].errors?.['required'])">
-              <img src="/assets/images/white-error.png" alt="" width="24px" height="24px" />
+              <img src="/assets/images/white-error.png" alt="" width="18px" height="18px" />
               {{ formControlNameError }} required
             </div>
             <div class="alert-danger" *ngIf="(f[formControlNameError].errors?.['minlength'])">
-              <img src="/assets/images/white-error..png" alt="" width="24px" height="24px" />
+              <img src="/assets/images/white-error..png" alt="" width="18px" height="18px" />
               {{ formControlNameError }} min lenght required
             </div>
             <div class="alert-danger" ; *ngIf="(f[formControlNameError].errors?.['email'])">
-              <img src="/assets/images/white-error.png" alt="" width="24px" height="24px" />
+              <img src="/assets/images/white-error.png" alt="" width="18px" height="18px" />
               {{ formControlNameError }} is invalid
             </div>
             <div class="alert-danger" *ngIf="(f[formControlNameError].errors?.['pattern'])">
-              <img src="/assets/images/white-error.png" alt="" width="24px" height="24px" />
+              <img src="/assets/images/white-error.png" alt="" width="18px" height="18px" />
               {{ formControlNameError }} pattern is wrong
             </div>
 
             <div class="alert-danger" *ngIf="(f[formControlNameError].errors?.['matching'])">
-              <img src="/assets/images/white-error.png" alt="" width="24px" height="24px" />
+              <img src="/assets/images/white-error.png" alt="" width="18px" height="18px" />
               {{ formControlNameError }} has not matched
             </div>
           </div>
@@ -230,23 +238,23 @@
         <div *ngSwitchDefault>
           <div class="profileHeader">
             <div class="divv">
-              <img src="/assets/images/profile.png" />
+              <img src="{{ profileImgSrc }}" />
             </div>
             <img src="/assets/images/close.png" (click)="closeModal()" class="close" />
-            <div class="row text-start" style="margin-top: 10%">
+            <div class="row text-start" style="margin-top: 20%">
               <br />
               <div class="col-6 text-start">
                 <h6 class="profile" style="margin: 0">Profile</h6>
                 <br />
               </div>
               <div class="col-6 text-end" style="line-height: 40px">
-                <img src="/assets/images/edit.png" width="15px" height="15px" (click)="EditORchangePassword('edit')" />
+                <img src="/assets/images/edit.png" width="15px" height="15px" style="cursor: pointer;"(click)="EditORchangePassword('edit')" />
               </div>
             </div>
 
             <div class="row">
               <div class="col-4 text-center">
-                <img class="profile-image" src="/assets/images/profile.png" width="80px" height="80px" alt="" />
+                <img class="profile-image" src="{{ profileImgSrc }}" style="cursor: pointer;" width="80px" height="80px" alt="" />
                 <!-- {{profileImgSrc}} -->
               </div>
               <div class="col-8 text-start" style="padding-left:0px">
@@ -315,8 +323,7 @@
                 <p class="text-start change-password">Change Password</p>
               </div>
               <div class="col-2">
-                <img src="assets\images\right-angular.png" (click)="EditORchangePassword('changePassword')" width="13px"
-                  height="15px" />
+                <img src="/assets/images/right-angular.png" style="cursor: pointer;" width="10px" height="16px" (click)="EditORchangePassword('changePassword')" />
               </div>
             </div>
           </div>
@@ -328,7 +335,7 @@
       <div [ngSwitch]="privacyOrTOS">
         <div *ngSwitchCase="'Privacy Policy'">
           <div class="settings-header">
-            <img src="assets\images\white-back.jpg" alt="" (click)="isPrivacyOrTOS(' ')" />
+            <img style="cursor: pointer;width: 24px;" src="assets\images\white-back.png" alt="" (click)="isPrivacyOrTOS(' ')" />
             <p class="text-start profile" style="padding-top: 5%">
               Privacy Policy
             </p>
@@ -362,7 +369,7 @@
         </div>
         <div *ngSwitchCase="'Terms Of Services'">
           <div class="settings-header">
-            <img src="assets\images\white-back.jpg" alt="" style="margin-left: -328px" (click)="isPrivacyOrTOS(' ')" />
+            <img src="assets\images\white-back.png" alt="" style="cursor: pointer;width: 24px;" (click)="isPrivacyOrTOS(' ')" />
             <p class="text-start profile" style="padding-top: 5%">
               Terms Of Services
             </p>
@@ -397,7 +404,7 @@
         <div *ngSwitchDefault>
           <div class="settings-header">
             <!-- <img src="/assets/images/close.png" (click)="closeModal()" class="close" /> -->
-            <img src="/assets/images/close.png" (click)="closeModal()" width="21" height="20"/>
+            <img src="/assets/images/close.png" (click)="closeModal()" width="21" height="20" style="cursor: pointer;"/>
             <p class="profile text-start">Settings</p>
            
            
@@ -408,7 +415,7 @@
               <tbody>
                 <tr>
                   <td class="text-start">
-                    <img src="/assets/images/settings1.jpg" width="17px" height="17px" />
+                    <img src="/assets/images/settings1.jpg" width="24px" height="24px" />
                   </td>
                   <td class="text-start main-text">Notifications Settings</td>
                   <td></td>
@@ -430,11 +437,11 @@
                 <tr style="border-bottom: 1px solid rgb(200, 200, 200, 0.5)"></tr>
                 <tr>
                   <td class="text-start">
-                    <img src="/assets/images/privacy1.jpg" width="17px" height="17px" />
+                    <img src="/assets/images/privacy1.jpg" width="20px" height="20px" />
                   </td>
                   <td class="text-start main-text">Privacy Policy</td>
                   <td class="text-center" (click)="isPrivacyOrTOS('Privacy Policy')">
-                    <img src="assets/images/right-angular.png" width="13px" height="15px" />
+                    <img src="/assets/images/right-angular.png" width="10px" height="16px" style="cursor: pointer;"/>
                   </td>
                 </tr>
 
@@ -444,11 +451,11 @@
                   "></tr>
                 <tr>
                   <td class="text-start">
-                    <img src="/assets/images/TOS.jpg" width="17px" height="17px" />
+                    <img src="/assets/images/TOS.jpg" width="20px" height="20px" />
                   </td>
                   <td class="text-start main-text">Terms Of Services</td>
                   <td class="text-center" (click)="isPrivacyOrTOS('Terms Of Services')">
-                    <img src="assets/images/right-angular.png" width="13px" height="15px" />
+                    <img src="/assets/images/right-angular.png" width="10px" height="16px" style="cursor: pointer;"/>
                   </td>
                 </tr>
                 <tr style="

@@ -1,10 +1,10 @@
 <!-- <button (click)="closeDialog()"></button> -->
-<app-header></app-header>
+
 <!-- <app-login-success *ngIf="successLoginTemplateTime!==10"></app-login-success> -->
 <!-- [ngClass]="{checkk:successLoginTemplateTime!==10}" -->
 <div class="home-body" >
-    <p>Hello!</p>
-    <h3>Mahendra Singh dhoni</h3>
+    <h4>Hello!</h4>
+    <h3>{{fullName}}</h3>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -17,21 +17,24 @@
               <div class="div">
                 
                   <div class="dibb"[routerLink]="['/courseDetails', homeContent.allCourses[0]._id,homeContent.allCourses[0].courseName]" >
+                    <div class="image-top-shade"></div>
                     <div class="image-bottom-shade"></div>
-                    <img  src={{homeContent.allCourses[0].courseImg}} alt="First slide">
-                    <p>{{homeContent.allCourses[0].courseName}}</p>
+                    <img  src={{homeContent.allCourses[0].courseImg}} alt="First slide"style="cursor: pointer;">
+                    <p style="font-size: 18px;font-weight: 400;">{{homeContent.allCourses[0].courseName}}</p>
                   
                   </div>
-                  <div class="dibb">
+                  <div class="dibb" [routerLink]="['/courseDetails', homeContent.allCourses[1]._id,homeContent.allCourses[1].courseName]">
+                    <div class="image-top-shade"></div>
                     <div class="image-bottom-shade"></div>
-                    <img  src={{homeContent.allCourses[1].courseImg}} alt="First slide">
-                    <p>{{homeContent.allCourses[1].courseName}}</p>
+                    <img  src={{homeContent.allCourses[1].courseImg}} alt="First slide"style="cursor: pointer;">
+                    <p style="font-size: 18px;font-weight: 400;">{{homeContent.allCourses[1].courseName}}</p>
                    
                   </div>
-                  <div class="dibb">
+                  <div class="dibb"[routerLink]="['/courseDetails', homeContent.allCourses[2]._id,homeContent.allCourses[2].courseName]">
+                    <div class="image-top-shade"></div>
                     <div class="image-bottom-shade"></div>
-                    <img  src={{homeContent.allCourses[2].courseImg}} alt="First slide">
-                    <p>{{homeContent.allCourses[2].courseName}}</p>
+                    <img  src={{homeContent.allCourses[2].courseImg}} alt="First slide"style="cursor: pointer;">
+                    <p style="font-size: 18px;font-weight: 400;">{{homeContent.allCourses[2].courseName}}</p>
                     
                   </div>
               </div>
@@ -39,22 +42,25 @@
           </div>
           <div class="carousel-item">
             <div class="div">
-                <div class="dibb">
+                <div class="dibb"[routerLink]="['/courseDetails', homeContent.allCourses[3]._id,homeContent.allCourses[3].courseName]">
+                  <div class="image-top-shade"></div>
                   <div class="image-bottom-shade"></div>
-                    <img  src={{homeContent.allCourses[3].courseImg}} alt="Second slide">
-                    <p>{{homeContent.allCourses[3].courseName}}</p>
+                    <img  src={{homeContent.allCourses[3].courseImg}} alt="Second slide"style="cursor: pointer;">
+                    <p style="font-size: 18px;font-weight: 400;">{{homeContent.allCourses[3].courseName}}</p>
                     
                   </div>
-                  <div class="dibb">
+                  <div class="dibb"[routerLink]="['/courseDetails', homeContent.allCourses[4]._id,homeContent.allCourses[4].courseName]">
+                    <div class="image-top-shade"></div>
                     <div class="image-bottom-shade"></div>
                     <img  src="https://cdn-images-1.medium.com/max/2000/1*SSutxOFoBUaUmgeNWAPeBA.jpeg" alt="Second slide">
-                    <p>{{homeContent.allCourses[4].courseName}}</p>
+                    <p style="font-size: 18px;font-weight: 400;">{{homeContent.allCourses[4].courseName}}</p>
                   
                   </div>
                   <div class="dibb">
+                    <div class="image-top-shade"></div>
                     <div class="image-bottom-shade"></div>
                     <img src="https://www.androidauthority.com/wp-content/uploads/2016/09/react-native-logo.jpg">
-                    <p>React Native</p>
+                    <p style="font-size: 18px;font-weight: 400;">React Native</p>
                    
                   </div>
 
@@ -64,21 +70,24 @@
           <div class="carousel-item">
             <div class="div">
                 <div class="dibb">
+                  <div class="image-top-shade"></div>
                   <div class="image-bottom-shade"></div>
                     <img  src="https://cdn-images-1.medium.com/max/2000/1*SSutxOFoBUaUmgeNWAPeBA.jpeg" alt="Third slide">
-                    <p>Python course</p>
+                    <p style="font-size: 18px;font-weight: 400;">Python course</p>
                     
                   </div>
                   <div class="dibb">
+                    <div class="image-top-shade"></div>
                     <div class="image-bottom-shade"></div>
                     <img  src="https://1001tricks.com/wp-content/uploads/2011/05/css3-scaled.jpg" alt="Third slide">
-                    <p>CSS course</p>
+                    <p style="font-size: 18px;font-weight: 400;">CSS course</p>
                     
                   </div>
                   <div class="dibb">
+                    <div class="image-top-shade"></div>
                     <div class="image-bottom-shade"></div>
                     <img  src="https://pantheon.io/sites/default/files/field/image/TypeScriptImage.jpeg" alt="Third slide">
-                    <p>Typescript course</p>
+                    <p style="font-size: 18px;font-weight: 400;">Typescript course</p>
                    
                   </div>
            
@@ -88,19 +97,22 @@
           <div class="carousel-item">
             <div class="div">
                 <div class="dibb">
+                  <div class="image-top-shade"></div>
                   <div class="image-bottom-shade"></div>
                     <img  src="https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg">
-                    <p>JAVA course</p>
+                    <p style="font-size: 18px;font-weight: 400;">JAVA course</p>
                   </div>
                   <div class="dibb">
+                    <div class="image-top-shade"></div>
                     <div class="image-bottom-shade"></div>
                     <img  src="https://1001tricks.com/wp-content/uploads/2011/05/css3-scaled.jpg" alt="Third slide">
-                    <p>CSS course</p>
+                    <p style="font-size: 18px;font-weight: 400;">CSS course</p>
                   </div>
                   <div class="dibb">
                     <div class="image-bottom-shade"></div>
+                    <div class="image-top-shade"></div>
                     <img  src="https://pantheon.io/sites/default/files/field/image/TypeScriptImage.jpeg" alt="Third slide">
-                    <p>Typescript course</p>
+                    <p style="font-size: 18px;font-weight: 400;">Typescript course</p>
                   </div>
            
             </div>
@@ -134,10 +146,16 @@ Ongoing course
      
      <div class="ongoing-course" >
         <div class="dibb" *ngFor="let data of homeContent.ongoingCourses.slice(0,3);let i=index " >
+          <div class="image-top-shade"></div>
           <div class="image-bottom-shade"></div>
-            <img  src={{data.courseImg}} alt="Not Found"  onerror="this.onerror=null; this.src='https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg'">
+            <img  src={{data.courseImg}}  style="cursor: pointer;" alt="Not Found"  onerror="this.onerror=null; this.src='https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg'">
             <div class="ongoing-inner">
-              <p>{{data.courseName}}</p>
+              <div>
+                <p style="font-size: 18px;font-weight: 400;">{{data.courseName}}</p>
+                <p>15/20 Chapters</p>
+              </div>
+             
+              <button>Continue</button>
               <!-- <div class="ongoing-inner-block">
                 
                 <p>{{data.totalChapters}}</p>
@@ -180,7 +198,7 @@ Ongoing course
             Choose your course
         </div>
         <div class="rightDiv">
-            See all
+            See All
         </div>
         <div style="clear: both;"></div>
     </div>
@@ -238,7 +256,7 @@ Ongoing course
 Top course in Business
 </div>
 <div class="rightDiv">
-See all
+See All
 </div>
 <div style="clear: both;"></div>
 </div>
@@ -280,7 +298,7 @@ See all
 Top course in Design
 </div>
 <div class="rightDiv">
-See all
+See All
 </div>
 <div style="clear: both;"></div>
 </div>

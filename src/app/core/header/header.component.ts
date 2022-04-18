@@ -23,6 +23,7 @@ toggle:boolean=false
 filterDialogBox:boolean=false
 homeContent:any=""
 headers = new HttpHeaders({ 'Authorization': "jwt "+localStorage.getItem('login jwtToken')})
+  chapters: any='';
 
   constructor(private http:HttpClient,private dialogService:DialogService,private service:CommonService) {}
 
@@ -41,6 +42,14 @@ headers = new HttpHeaders({ 'Authorization': "jwt "+localStorage.getItem('login 
     // }else{
     //   this.searchButtonStatus=false
     // }
+    if(this.service.matdialogCategory!==''){
+      this.categorie=this.service.matdialogCategory
+      console.log(this.categorie,"service data")
+    }
+    if(this.service.matdialogDuration!==''){
+      this.chapters=this.service.matdialogDuration
+      console.log(this.chapters,"service data")
+    }
 
     this.searchButtonStatus=true
     
@@ -56,7 +65,7 @@ headers = new HttpHeaders({ 'Authorization': "jwt "+localStorage.getItem('login 
         {
           courseName: this.searchInfo,
           category: this.categorie,
-          totalChapters: '',
+          totalChapters: this.chapters,
         },
         { headers: headers }
       )
@@ -92,7 +101,9 @@ headers = new HttpHeaders({ 'Authorization': "jwt "+localStorage.getItem('login 
     //   this.toggle = false;
     // }
   }
-
+eraseToken(){
+  localStorage.setItem('login jwtToken',"" )
+}
   filterunToggle(){
     if(this.searchInfo===''){
       this.toggle = false;
@@ -144,6 +155,12 @@ headers = new HttpHeaders({ 'Authorization': "jwt "+localStorage.getItem('login 
   dropdownToggled(){
     this.dropdownToggle=!this.dropdownToggle
   }
+  removeDropDown(){
+    setTimeout(() => {
+      this.dropdownToggle=false
+    }, 500);
+    
+  }
 
   openDialog(NavbarIcon:any){
     this.dropdownToggle=false
@@ -159,7 +176,36 @@ headers = new HttpHeaders({ 'Authorization': "jwt "+localStorage.getItem('login 
 }
 categories(data:any){
   this.categorie=data
-  console.log(this.categorie)
+ if(this.searchInfo===''){
+  this.searchButtonStatus=true
+  let homeContentUrl =
+  'https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/search';
+
+let headers = new HttpHeaders({
+  Authorization: 'jwt ' + localStorage.getItem('login jwtToken'),
+});
+this.http
+  .post(
+    homeContentUrl,
+    {
+      courseName: "",
+      category: data,
+      totalChapters: '',
+    },
+    { headers: headers }
+  )
+  .subscribe({
+    next: (res: any = {}) => {
+      this.searchContent=res
+      this.searchContentStatus = res.meta.code;
+    console.log(res,"ggggggggggggggggggg")
+    },
+    error: (error: any) => {
+   console.log(error)
+    },
+  });
+ }
+ 
 }
 
 

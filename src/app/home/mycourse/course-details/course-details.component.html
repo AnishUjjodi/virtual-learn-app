@@ -1,13 +1,21 @@
 
   
-  <p class=" section text-start"><span class="Mycourse">My Course&nbsp;>&nbsp;</span><span class="Ongoing">Ongoing</span>
+  <p class=" section text-start">
+    <br>
+    <br>
+    <span style="cursor: pointer;"class="Mycourse" routerLink="/myCourse">My Course&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+    </svg>&nbsp;&nbsp;</span>
+    <span class="Ongoing">Ongoing</span>
   </p>
+  <br>
+  <br>
   <div class="main-container">
     <div class="video">
   
       <div class="imag" *ngIf="Isvideo === false; ">
         <div class="shadow"></div>
-        <img src="{{couseContent.data.courseImg}}" alt="">
+        <img src="{{couseContent.data.courseImg}}" alt="Not Found" style="object-fit: cover;object-position: center;" onerror="this.onerror=null; this.src='https://zeptosystems.com/wp-content/uploads/2018/10/java-1.jpg'">
   
         <p class="preview">Preview the course</p>
         <div class="intoduction">

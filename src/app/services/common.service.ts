@@ -14,8 +14,15 @@ export class CommonService {
   VideoUrl=new Subject();
   course_id: any;
   course_name: any;
+  fullname=new Subject()
+  matdialogCategory: any;
+  matdialogDuration: any;
   
   constructor(private http:HttpClient) { }
+
+  fullnameSend(data:any){
+    this.fullname.next(data)
+  }
   getToken(token:any){
     this.jwtToken.next(token);
   }
@@ -28,9 +35,9 @@ export class CommonService {
     this.NavbarIcon.next(NavbarIcon)
       }
 
-      triggerHeader(data:any){
-this.headerChange.next(data)
-      }
+//       triggerHeader(data:any){
+// this.headerChange.next(data)
+//       }
       viewCourse(){
 
         let viewCourseUrl=new URL("https://virtuallearn2.herokuapp.com/api/v1/virtualLearn/viewCourse?courseName=course_name&courseId=62273c244603abcaf3ffeeb1")
@@ -44,5 +51,12 @@ this.headerChange.next(data)
       setIdAndName(course_id:any, course_name:any){
         this.course_id=course_id;
         this.course_name=course_name;
+      }
+      matdialogApplyFilterData(data1:any,data2:any){
+        console.log(data1)
+        console.log(data2)
+        this.matdialogCategory=data1;
+        this.matdialogDuration=data2;
+
       }
 }

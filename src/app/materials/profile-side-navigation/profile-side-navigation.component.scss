@@ -98,7 +98,7 @@
       // opacity: 0.9;
       padding: 13px;
       
-      height: 180px;
+      height: 224px;
   
       .close {
         width: 23px;
@@ -193,6 +193,7 @@
         box-shadow: 0px 0px 11px rgba(0, 0, 0, 0.15);
         border-radius: 2px;
         align-items: center;
+        padding-left: 13px;
   
         .icon-box {
           height: 44px;
@@ -243,6 +244,29 @@
         margin-left: -257px;
         object-fit: contain;
       }
+      .editimageprofile{
+        position: relative;
+      
+        width: 100px;
+        height: 100px;
+        border: 1px solid rgba(245, 245, 245, 0.253);
+        border-radius: 5px;
+        margin-left: 31.5%;
+        margin-right: auto;
+        .profileimage{
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          border-radius: 5px;
+          
+        }
+        label{
+          position: absolute;
+          
+          bottom: -18px;
+          right: -12px;
+        }
+      }
     }
   
     .CommonBody {
@@ -251,7 +275,9 @@
         padding-top: 10%;
         padding-left: 10%;
         padding-right: 10%;
-  
+        text-align: left;
+       
+        
       .form-label {
         transform-origin: 0 0;
         color: transparent;
@@ -259,26 +285,28 @@
       }
   
       .form-control {
+        border-radius: 0px;
         box-shadow: none;
-        border-color: #ccc;
+        border-color: rgba(4, 44, 92, 0.4);
+      
         border-style: none none solid none;
         width: 100%;
         transition: all .5s;
         padding: 0px;
-        @include font-style('Avenir', normal, 500, 17px, 25px, #072D5B);
+        @include font-style('proxima-nova-soft', normal, 500, 17px, 25px, #072D5B);//Avenir
   
       }
   
       .form-control::placeholder {
-        @include font-style('Avenir', normal, 400, 16px, 22px, #7A7A7A);
-  
+        @include font-style('proxima-nova-soft', normal, 400, 16px, 22px, #7A7A7A);//Avenir
+       
       }
       .form-control:focus::placeholder {
         color: transparent;
       }
       .form-control:focus+.form-label,
       .form-control:not(:placeholder-shown)+.form-label {
-        @include font-style('Avenir', normal, 400, 16px, 22px, #7A7A7A);
+        @include font-style('proxima-nova-soft', normal, 400, 16px, 22px, #7A7A7A);//Avenir
         transform-origin: 0 0;
       }
       select {
@@ -290,13 +318,18 @@
       background: #EE5C4D;
       border-radius: 6px;
       color:white;
+      border: none;
       }
     }
     .alert-danger{
-        margin-top: 73%;
+        
         background-color: red;
         color: white;
         padding: 1%;
+  
+        position: absolute;
+        bottom: 0;
+        width: 100%;
     }
   }
   
@@ -316,6 +349,10 @@
   }
   .settings-body{
     padding: 5%;
+    img{
+      margin-top: -4px;
+    }
+   
   }
   .profile {
     @include font-style('proxima-nova-soft', normal, 700, 24px, 35px, #FFFFFF);
@@ -325,17 +362,17 @@
     color: #373737;
   }
   .main-text{
-    @include font-style('proxima-nova-soft', normal, 700, 20px, 19px, #373737);
+    @include font-style('proxima-nova-soft', normal, 700, 19px, 19px, #373737);
   }
   .sub-text{
     @include font-style('proxima-nova-soft', normal, 700, 16x, 26px, #373737);
   }
   .content{
-    @include font-style('proxima-nova-soft', normal, 700, 18px, 26px, #373737);
+    @include font-style('proxima-nova-soft', normal, 700, 16px, 22px, #373737);
   }
-  
   .settings-body-text{
-    text-align: justify;
+    // display: inline;
+    // text-align: justify;
     padding: 5%;
     text-align-last: left;
   }

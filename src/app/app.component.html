@@ -1,5 +1,5 @@
 <!-- <app-intro></app-intro> -->
 <!-- *ngIf="routerPath==='/home'" -->
-
+<app-header *ngIf="routerPath!=='/login'&& routerPath!=='/login-success'&& routerPath!=='/password-changed-successfully'"></app-header>
 <router-outlet></router-outlet>
 <!-- <app-login></app-login> -->
